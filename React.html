@@ -75,8 +75,30 @@
   <li> render where? <strong>index.html</strong> in the folder <strong>public</strong> in the <strong>&lt;div&gt;</strong> </li>
 </ol>
 
+<hr>
+<h2>The render Method</h2>
 
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>Display a paragraph inside an element with the id of "root":</h4>
 
+    <div class="w3-code htmlHigh notranslate">
+      const container = document.getElementById('root');<br>
+      const root = ReactDOM.createRoot(container);<br>
+      root.render(<p>Hello</p>);
+     
+    </div>
+  </div>
+  <div class="w3-panel w3-card w3-light-grey"> 
+    <h4>The result is displayed in the <div id="root"> element:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        &lt;body&gt;<br>
+          &lt;div id="root"&gt;&lt;/div&gt;<br>
+          &lt;/body&gt;
+       
+      </div>
+    </div>
+  
 
 
 
