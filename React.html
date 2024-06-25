@@ -152,8 +152,40 @@
   </div>
 
 <!-- ============== -->
-
+<hr>
+<hr>
+<hr>
+<hr>
 <h2>3-Upgrade React</h2>
+<p>Upgrading an existing React application to version 18 only requires two steps.</p>
+
+<h3>Step 1: Install React 18</h3>
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>To install the latest version, from your project folder run the following from the terminal:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        npm i react@latest react-dom@latest
+      </div>
+    </div>
+<hr>
+    <h3>Step 2: Use the new root API</h3>
+
+    <div class="w3-panel w3-card w3-light-grey"> 
+        <h4>In order to take advantage of React 18's concurrent features you'll need to use <strong>the new root API</strong> for client rendering.</h4>
+      
+          <div class="w3-code htmlHigh notranslate">
+            // Before <br>
+            import ReactDOM from 'react-dom';<br>
+            ReactDOM.render(&lt;App /&gt;, document.getElementById('root')); <br>
+
+
+            // After <br>
+            import ReactDOM from 'react-dom/client';<br>
+            const root = ReactDOM.createRoot(document.getElementById('root')); <br>
+            root.render(&lt;App /&gt;);
+          </div>
+        </div>
+
 <h3>3-What is ES6? (CAVA DSMT)</h2>
 <h3>3.1-React ES6 Classes</h2>
 <h3>3.2-React ES6 Arrow Functions</h2>
