@@ -189,33 +189,6 @@
 
 
 
-        <div class="w3-panel w3-card w3-light-grey"> 
-            <h4>Create an object called "mycar" based on the Car class:</h4>
-          
-              <div class="w3-code htmlHigh notranslate">
-                &lt;!DOCTYPE html&gt;
-                &lt;html&gt;
-                
-                &lt;body&gt;
-                  
-                &lt;script&gt;
-                class Car { <br>
-                    constructor(name)<br>
-                      this.brand = name; <br>
-                    }
-                }
-    
-                const mycar = new Car("Ford"); <br><br>
-
-                document.write(mycar.brand);<br>
-                &lt;/script&gt;<br><br>
-
-            &lt;/body&gt;<br>
-            &lt;/html&gt;<br>
-              </div>
-            </div>
-
-
 <hr>
 <hr>
 <hr>
@@ -275,6 +248,63 @@
 
 
 
+        <div class="w3-panel w3-card w3-light-grey"> 
+            <h4>Create an object called "mycar" based on the Car class:</h4>
+          
+              <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br><br>
+                
+                &lt;body&gt;<br><br>
+                  
+                &lt;script&gt;<br>
+                class Car { <br>
+                    constructor(name)<br>
+                      this.brand = name; <br>
+                    }
+                }
+    
+                const mycar = new Car("Ford"); <br><br>
+
+                document.write(mycar.brand);<br>
+                &lt;/script&gt;<br><br>
+
+            &lt;/body&gt;<br>
+            &lt;/html&gt;<br>
+              </div>
+            </div>
+
+
+            <div class="w3-panel w3-card w3-light-grey"> 
+                <h4>Create a method named "present":</h4>
+              
+                  <div class="w3-code htmlHigh notranslate">
+
+                    &lt;html&gt;<br><br>
+                
+                    &lt;body&gt;<br><br>
+
+                    class Car { <br>
+                        constructor(name) { <br>
+                            this.brand = name; <br>
+                        }<br>
+                    }<br><br>
+
+                    present() {<br>
+                        return 'I have a ' + this.brand;<br>
+                    }<br>
+                }<br>
+                const mycar = new Car("Ford");<br>
+                mycar.present();<br>
+                &lt;/script&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+
+                  </div>
+                </div>
+
+
 
 
     <hr>
@@ -285,6 +315,49 @@
     <!-- =============== -->
 
 <h3>3.2-React ES6 Arrow Functions</h2>
+    <ol>
+        <li>Arrow functions allow us to write <strong>shorter function syntax</strong>:</li>
+    </ol>
+
+
+    <div class="w3-panel w3-card w3-light-grey"> 
+        <h4>Arrow Function</h4>
+      
+          <div class="w3-code htmlHigh notranslate">
+            &lt;!DOCTYPE html&gt;<br>
+            &lt;html&gt;<br><br>
+                
+            &lt;body&gt;<br><br>
+
+                &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
+
+                &lt;script&gt;&lt;br&gt;<br>
+         hello = () => {<br>
+            return "Hello world!"<br>
+         }<br><br>
+
+         document.getElementById("demo").innerHTML = hello();<br>
+         &lt;/script&gt;<br><br>
+
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+
+
+          </div>
+        </div>
+
+
+
+    <hr>
+    <hr>
+    <hr>
+    <hr> 
+ 
+    <!-- =============== -->
+
+
+
+
 <h3>3.3-React ES6 Variables</h2>
 <h3>3.4-React ES6 Array Methods</h2>
 <h3>3.5-React ES6 Destructuring</h2>
