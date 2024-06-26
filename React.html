@@ -360,6 +360,43 @@
 
 <h3>3.3-React ES6 Variables</h2>
 <h3>3.4-React ES6 Array Methods</h2>
+
+    <ol>
+       <li>There are many JavaScript array methods.</li>
+       <li>One of the most useful in React is the <strong> .map() array method.</strong> </li>
+       <li>The .map() method allows you to <strong>run a function </strong>   </li>
+       <li>returning a new array as the result</li>
+       <li>In React,map() can be used to generate lists</li>
+       <li></li>
+       <li></li>
+    </ol>
+
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>Generate a list of items from an array:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        import React from 'react'; <br>
+        import ReactDOM from 'react-dom/client';<br>
+        const myArray = ['apple', 'banana', 'orange'];<br><br>
+
+        const myList = myArray.map((item) => &lt;p&gt;{item}&lt;/p&gt;)<br><br>
+
+        const container = document.getElementById('root');<br>
+        const root = ReactDOM.createRoot(container);<br>
+        root.render(myList);
+        
+      </div>
+    </div>
+
+
+
 <h3>3.5-React ES6 Destructuring</h2>
 <h3>3.6-React ES6 Spread Operator</h2>
 <h3>3.7-React ES6 Modules</h2>
