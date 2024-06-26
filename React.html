@@ -461,9 +461,50 @@
               
               </div>
             </div>
+            
+            <div class="w3-panel w3-card w3-light-grey"> 
+                <h4>Destructring Objects : here is the old way of using a function <strong>before</strong></h4>
+              
+                  <div class="w3-code htmlHigh notranslate">
+                    const vehicleOne = {
+                        brand: 'Ford',
+                        model: 'Mustang',
+                        type: 'car',
+                        year :2024,
+                        color: 'red'
+
+                    }
+                    myVehicle(vehicleOne);
+
+                    //old way 
+                    function myVehicle(vehicleOne) {
+                        const message = 'My' + vehicle.type + 'is a ' + vehicle.color + ' '+ vehicle.color + ' ' + vehicle.brand + ' '+ vehicle.model + ' ' ;
+                    }
+                    
+                  </div>
+                </div>
+            
 
 
-
+                <div class="w3-panel w3-card w3-light-grey"> 
+                    <h4>Here is the new way of using an object insde a function with destructing :</h4>
+                  
+                      <div class="w3-code htmlHigh notranslate">
+                       const vehicleOne = {
+                        brand: 'Ford',
+                        model: 'Mustang',
+                        type: 'car',
+                        year: 2021,
+                        color: 'red'
+                       }
+                        
+                       myVehicle(vehicleone);
+                       
+                       function myVehicle ({type, color , brand , model}) {
+                        const message = 'My ' +  type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
+                       }
+                      </div>
+                    </div>
 <hr>
 <hr>
 <hr>
