@@ -490,6 +490,13 @@
                     <h4>Here is the new way of using an object insde a function with destructing :</h4>
                   
                       <div class="w3-code htmlHigh notranslate">
+                        <!DOCTYPE html>
+                        <html>
+
+                        <body>
+                            <script>
+                        <p id="demo"></p>
+
                        const vehicleOne = {
                         brand: 'Ford',
                         model: 'Mustang',
@@ -503,6 +510,14 @@
                        function myVehicle ({type, color , brand , model}) {
                         const message = 'My ' +  type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
                        }
+
+                       document.getElementById("demo").innerHTML = message;
+                    }
+                      </script>
+
+                       </body>
+                       </html>
+
                       </div>
                     </div>
 <hr>
