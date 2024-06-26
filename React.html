@@ -405,6 +405,64 @@
     <li>We may have an <strong>array</strong> <strong>object</strong>  that we are working with, but we only <strong>need some of the items </strong>contained in these.</li>
   
 </ol>
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>assigning array items to a variable With destructuring:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        const vehicles = ['mustang', 'f-150', 'expedition']; <br><br>
+        const [car, truck, suv] = vehicles;
+      
+      </div>
+    </div>
+
+
+
+    <div class="w3-panel w3-card w3-light-grey"> 
+        <h4>If we only want the car and suv we can simply leave out the truck <strong>but keep the comma</strong></h4>
+      
+          <div class="w3-code htmlHigh notranslate">
+            const vehicles = ['mustang', 'f-150', 'expedition']; <br><br>
+            const [car,, suv] = vehicles;
+          
+          </div>
+        </div>
+
+
+        <div class="w3-panel w3-card w3-light-grey"> 
+            <h4>Destructuring comes in handy when a <strong>function returns an array:</strong>  <strong> </strong></h4>
+          
+              <div class="w3-code htmlHigh notranslate">
+                <!DOCTYPE html>
+                <html>
+
+                <body>
+                
+                &lt;script&gt;<br>
+                function calculate(a, b) { <br>
+                    const add = a + b;<br>
+                    const subtract = a - b;<br>
+                    const multiply = a * b;<br>
+                    const divide = a / b;<br><br>
+
+                    return [add, subtract, multiply,divide];<br>
+                }<br><br>
+
+                const [add, subtract, multiply , divide]= calculate(4,7);<br>
+                document.write("&lt;p&gt;Sum: " + add + "&lt;/p&gt;");<br>
+                document.write("&lt;p&gt;Difference " + subtract + "&lt;/p&gt;");<br>
+                document.write("&lt;p&gt;Product: " + multiply + "&lt;/p&gt;");<br>
+                document.write("&lt;p&gt;Quotient " + divide + "&lt;/p&gt;");<br><br>
+            
+                &lt;/script&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>  
+                    
+              
+              </div>
+            </div>
+
+
 
 <hr>
 <hr>
