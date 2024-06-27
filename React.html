@@ -490,33 +490,33 @@
                     <h4>Here is the new way of using an object insde a function with destructing :</h4>
                   
                       <div class="w3-code htmlHigh notranslate">
-                        <!DOCTYPE html>
-                        <html>
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br><br>
 
-                        <body>
-                            <script>
-                        <p id="demo"></p>
+                        &lt;body&gt;<br>
+                          &lt;script&gt;<br>
+                          &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
 
-                       const vehicleOne = {
-                        brand: 'Ford',
-                        model: 'Mustang',
-                        type: 'car',
-                        year: 2021,
-                        color: 'red'
-                       }
+                       const vehicleOne = {<br>
+                        brand: 'Ford',<br>
+                        model: 'Mustang',<br>
+                        type: 'car',<br>
+                        year: 2021,<br>
+                        color: 'red'<br>
+                       }<br><br>
                         
-                       myVehicle(vehicleone);
+                       myVehicle(vehicleone);<br><br>
                        
-                       function myVehicle ({type, color , brand , model}) {
-                        const message = 'My ' +  type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
-                       }
+                       function myVehicle ({type, color , brand , model}) {<br>
+                        const message = 'My ' +  type + ' is a ' + color + ' ' + brand + ' ' + model + '.';<br>
+                       }<br><br>
 
-                       document.getElementById("demo").innerHTML = message;
-                    }
-                      </script>
+                       document.getElementById("demo").innerHTML = message;<br>
+                    }<br>
+                    &lt;/script&gt;<br><br>
 
-                       </body>
-                       </html>
+                       &lt;/body&gt;<br>
+                       &lt;/html&gt;<br>
 
                       </div>
                     </div>
@@ -529,7 +529,118 @@
 
 
 <h3>3.6-React ES6 Spread Operator</h2>
+
+
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+
+
 <h3>3.7-React ES6 Modules</h2>
+
+<ol>
+ <li>JavaScript modules allow you to <strong>break</strong>  up your code into separate files.</li>
+ <li>ES Modules rely on the <strong>import</strong> and <strong>export</strong> statements.</li>
+ <li>You can <strong>export</strong> a <mark>function</mark> or <mark>variable</mark> from any <strong>file.</strong> </li>
+ <li>There are <strong>two</strong> types of exports:<mark>Named</mark>  and <mark>Default.</mark>Default<mark>(ND).</mark></li>
+ <li>Let us <strong>create a file</strong> named <mark>person.js</mark></li>
+ 
+</ol>
+
+<h4>A-Named Exports</h4>
+<p>You can create named exports two ways:</p>
+<ol>
+  <li>In-line individually,</li>
+  <li> all at once at the bottom.</li>
+
+</ol>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>In-line individually,</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      export const name = "Jesse"<br>
+      export const age = 40 <br>
+    
+    </div>
+  </div>
+
+<hr>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>All at once at the bottom:</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      const name = "Jesse"<br>
+      const age = 40 <br><br>
+
+      export { name, age }
+    
+    </div>
+  </div>
+
+  <hr>
+  <h4>B-Default Exports</h4>
+<ol>
+  <li>Let us create another file, named message.js</li>
+  <li>use the file for demonstrating default export.</li>
+  <li>You can only have <mark>one default export in a file.</mark></li>
+
+</ol>
+<hr>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>Default Exports Example file name: message.js </h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      const message = () => {<br>
+      const name = "Jesse" <br>
+      const age = 40;<br>
+      return name + ' is ' + age + 'years old';<br>
+      }; <br> <br>
+
+      export default message;
+    
+    </div>
+  </div>
+<hr>
+<hr>
+<h4>Import</h4>
+<ol>
+  <li>You can <strong>import</strong> modules into a file <mark>in two ways</mark></li>
+  <li> based on if they are <strong>named exports</strong> or <strong>default exports.</strong></li>
+  <li><strong>Named exports</strong> must be destructured using <mark>curly braces.</mark></li>
+  <li>Default exports <strong>do not.</strong></li>
+</ol>
+
+<hr>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>Import named exports from the file person.js:</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      &lt;!DOCTYPE html&gt; <br>
+      &lt;html&gt;<br><br>
+
+      &lt;body&gt;<br><br>
+
+      &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
+
+      &lt;script type="module"&gt;<br>
+        import {name, age } from "./person.js;"<br><br>
+
+        document.getElementById("demo").innerHTML = "My name is " + name;<br>
+        document.getElementById("demo").innerHTML += ", I am " + age + ".";<br><br>
+
+        &lt;/script&gt;<br><br>
+
+        &lt;/body&gt;<br>
+        &lt;/html&gt;<br>
+
+    
+    </div>
+  </div>
+
+
 <h2>3.8-React ES6 Ternary Operator</h2>
 <h2>4-React Render HTML</h2>
 <h2>5-React Components</h2>
