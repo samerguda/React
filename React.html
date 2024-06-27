@@ -731,6 +731,53 @@
 </ol>
 
 
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>Display the <strong>Car component</strong>  in the "root" element: </h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        import React from 'react';<br>
+        import ReactDOM from 'react-dom/client';<br><br>
+
+        function Car() {<br>
+            return &lt;h2&gt; hi , i am a React Developer!&lt;/h2&gt;;<br>
+        }<br><br>
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+        root.render(&lt;car/&gt;);
+      
+      </div>
+    </div>
+
+<hr>
+<h3>Props</h3>
+<ol>
+    <li>Components can be passed as props</li>
+    <li>props stands for <strong>properties</strong></li>
+    <li>Props are like function <mark>arguments</mark></li>
+    <li>you send <strong>the props (arguments)</strong> into the component <strong>as attributes.</strong></li>
+    
+</ol>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>Use an <strong>attribute</strong> to pass a <strong>color</strong> to the Car component </h4>
+    <h4>use it in the render()function :</h4>
+      <div class="w3-code htmlHigh notranslate">
+        import React form 'react';<br>
+        import ReactDOM  from 'react-dom/client';<br><br>
+
+
+                function Car (props) {<br>
+            return &lt;h2&lt;I am a {props.color} Car!&lt;/h2&lt;;<br><br>
+        }
+      
+        const root = ReactDOM.creatRoot(document.getElementById('root'));<br>
+        root.render(&lt;car color="red"/&gt;);<br>
+      </div>
+    </div>
+
+
+
+
 
 <h2>6-React Class Components</h2>
 <h2>7-React Props</h2>
