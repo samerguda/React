@@ -934,6 +934,15 @@ root.render(&lt;Garage /&gt;);<br>
 <h2>8-React Events</h2>
 <!-- ====8-React Events====start -->
 <ol>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>React event syntax</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      &lt;button onClick={shoot}&gt;Take the Shot!&lt;/button&gt;
+     
+
+    </div>
+  </div>
 <li>like HTML DOM events,React can perform actions <strong>based on user events.</strong> </li>
 <li>React has the same events as HTML: <strong>click, change, mouseover etc.</strong> </li>
 <li>React events are written in <mark>camelCase syntax</mark></li>
@@ -993,9 +1002,160 @@ root.render(&lt;Garage /&gt;);<br>
 
 
 
-
+<!-- ====8-React Conditional Rendering====start -->
 <h2>9-React Conditional Rendering</h2>
+<ol>
+<li>In React, you can <strong>conditionally</strong> render components</li>
+<li>We can use the <mark>if JavaScript operator </mark>to decide which component to render.</li>
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>We'll use these two components:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        function MissedGoal() {<br>
+            return &lt;h1&gt;MISSED!&lt;/h1&gt;;<br>
+          }<br><br>
+          
+          function MadeGoal() {<br>
+            return &lt;h1&gt;Goal!&lt;/h1&gt;;<br>
+          }<br>
+  
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="w3-panel w3-card w3-light-grey"> 
+        <h4>Now, we'll create <strong>another component</strong>that chooses which component to render <mark>based on a condition:</mark> </h4>
+      
+          <div class="w3-code htmlHigh notranslate">
+            import React from 'react';<br>
+            import ReactDOM from 'react-dom/client';<br><br>
+            
+            function MissedGoal() {<br>
+                return &lt;h1>MISSED!&lt;/h1&gt;;<br>
+            }<br><br>
+            
+            function MadeGoal() {<br>
+                return &lt;h1&gt;GOAL!&lt;/h1&gt;;<br>
+            }<br><br>
+            
+            function Goal(props) {<br>
+              const isGoal = props.isGoal;<br>
+              if (isGoal) {<br>
+                return &lt;MadeGoal/&gt;;<br>
+              }<br>
+              return &lt;MissedGoal/&gt;;<br>
+            }<br><br>
+            
+            const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+            root.render(&lt;Goal isGoal={false} /&gt;);<br>
+      
+          </div>
+        </div>
+
+
+
+
+</ol>
+<!-- ====8-React ====8-React Events====End -->
+
+
+
+<!-- ====8-React Lists====start -->
 <h2>10-React Lists</h2>
+<ol>
+<li>In React, you will <strong>render lists</strong> with some <mark>type of loop.</mark> </li>
+<li>The JavaScript <mark>map() array method </mark>is generally the <strong>preferred method.</strong> </li>
+
+
+<div class="w3-panel w3-card w3-light-grey"> 
+    <h4>Let's <strong> render all </strong>of the cars from our garage:</h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        import React from 'react';<br>
+        import ReactDOM from 'react-dom/client';<br><br>
+        
+        function Car(props) {<br>
+          return &lt;li&gt;I am a { props.brand }&lt;/li&gt;;<br>
+        }<br><br>
+        
+        function Garage() {<br>
+          const cars = ['Ford', 'BMW', 'Audi'];<br>
+          return (<br>
+          &lt;&gt;v
+          &lt;h1&gt;Who lives in my garage?&lt;/h&gt;<br>
+          &lt;ul&gt;<br>
+                {cars.map((car) => &lt;Car brand={car} /&gt;)}<br>
+                &lt;/ul&gt;<br>
+                &lt;/&gt;<br>
+          );<br>
+        }<br>
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(&lt;Garage /&gt;);
+        
+        /*
+        If you run this example in your create-react-app,
+        you will receive a warning that there is no "key" provided for the list items.
+        */
+        
+  
+      </div>
+    </div>
+
+
+
+<li>When you run this code in your <strong>create-react-app,</strong></li>
+<li>it will work but you will receive a <strong>warning</strong> that there is <strong>no "key" provided</strong> for the list items.</li>
+<li><strong>Keys</strong> allow React to <mark>keep track of elements</mark> </li>
+<li>This way, <strong>if an item is updated </strong>or removed, <strong>only that item will be re-rendered</strong>  instead of the entire list.</li>
+<li>Keys need to be <mark>unique </mark>to <strong>each sibling.</strong> </li>
+<li>But they can be <strong>duplicated globally.</strong> </li>
+<li>the key should be a unique <strong>ID</strong> assigned to each item</li>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+
+  
+      <div class="w3-code htmlHigh notranslate">
+        import React from 'react';<br>
+        import ReactDOM from 'react-dom/client';<br><br>
+        
+        function Car(props) {<br>
+          return <li>I am a { props.brand }</li>;<br>
+        }<br><br>
+        
+        function Garage() {<br>
+          const cars = [<br>
+            {id: 1, brand: 'Ford'},<br>
+            {id: 2, brand: 'BMW'},<br>
+            {id: 3, brand: 'Audi'}<br>
+          ];<br>
+          return (<br>
+            <><br>
+                <h1>Who lives in my garage?</h1><br>
+                <ul><br>
+                {cars.map((car) => <Car key={car.id} brand={car.brand} />)}<br>
+              </ul><br>
+            </><br>
+          );<br>
+        }<br><br>
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+        root.render(<Garage />);<br>
+  
+      </div>
+    </div>
+
+
+<li></li>
+<li></li>
+<li></li>
+
+
+</ol>
+
+<!-- ====8-React Lists====end -->
+
 <h2>11-React Forms</h2>
 <h2>12-React Router</h2>
 <h2>13-React Memo</h2>
