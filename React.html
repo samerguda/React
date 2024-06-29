@@ -1161,7 +1161,63 @@ root.render(&lt;Garage /&gt;);<br>
 <h2>13-React Memo</h2>
 <h2>14-Styling React Using CSS</h2>
 <h2>15-Styling React Using Sass</h2>
+
+
+<!-- ====16-React Hooks====start -->
 <h2>16-React Hooks</h2>
+<ol>
+    <li>Hooks allow <strong>function components</strong>  to have <mark>access to state </mark>and other React features</li>
+    <li>Because of this, class components are generally <strong>no longer needed.</strong> </li>
+    <li>Although Hooks generally replace class components,</li>
+    <li>Hooks allow us to <mark>"hook" </mark> into React features such as <strong>state and lifecycle methods.</strong> </li>
+
+    <div class="w3-panel w3-card w3-light-grey"> 
+
+  
+        <div class="w3-code htmlHigh notranslate">
+            import React, { useState } from "react";
+            import ReactDOM from "react-dom/client";
+            
+            function FavoriteColor() {
+              const [color, setColor] = useState("red");
+                
+              return (
+                <>
+                  <h1>My favorite color is {color}!</h1>
+                  <button
+                    type="button"
+                    onClick={() => setColor("blue")}
+                  >Blue</button>
+                  <button
+                    type="button"
+                    onClick={() => setColor("red")}
+                  >Red</button>
+                  <button
+                    type="button"
+                    onClick={() => setColor("pink")}
+                  >Pink</button>
+                  <button
+                    type="button"
+                    onClick={() => setColor("green")}
+                  >Green</button>
+                </>
+              );
+            }
+            
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<FavoriteColor />);
+            
+    
+        </div>
+      </div>
+  
+
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+
 <h3>16.1-React useState Hook</h2>
 <h3>16.2-React useEffect Hooks</h2>
 <h3>16.3-React useContext Hook</h2>
