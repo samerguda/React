@@ -1225,7 +1225,10 @@ root.render(&lt;Garage /&gt;);<br>
     <li>Hooks <strong>will not work in React class components</strong> .</li>
   
 </ol>
+<!-- ====16-React Hooks====end -->
 
+
+<!-- ====16.1-React useState Hook<====start -->
 <h3>16.1-React useState Hook</h2>
     <ol>
         <li>The <mark>eact useState Hook</mark>R allows us to <mark> <strong>track state in a function component.</strong></mark> </li>
@@ -1246,12 +1249,56 @@ root.render(&lt;Garage /&gt;);<br>
       
 
         <li>We  <strong>initialize our state</strong> by calling <mark>useState in our function component.</mark> </li>
-        <li></li>
-        <li></li>
+        <li>useState <strong>accepts an initial state</strong>  and <mark>returns two values:</mark> 
+            <ol>
+                <li>The current state</li>
+                <li>A <strong>function</strong> that <mark>updates the state</mark></li>
+            </ol>
+        </li>
+        <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4><strong>Initialize state </strong>at the <mark>top of the function component.</mark></h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                import { useState } from "react";<br><br>
+
+                function FavoriteColor() {<br>
+                  const [color, setColor] = useState("");<br>
+                }<br>
         
+            </div>
+          </div>
+
+        <li>we are <strong>destructuring</strong> the <mark>returned values</mark>  from useState.</li>
+        <li>The first value, color, is our <strong>current state</strong></li>
+        <li>The second value, setColor, <strong>is the function </strong>that is used to<mark>update our state.</mark> </li>
+        <li><strong>These names</strong> <mark>are variables</mark> that can be <strong>named</strong> anything you would like.</li>
+        <li>we set the <strong>initial state </strong>to an <mark>empty string: useState("")</mark></li>
+
+      
 
     </ol>
+ <!-- ====16.1-React useState Hook<====end --> 
+
+
+
 <h3>16.2-React useEffect Hooks</h2>
+    <ol>
+        <li>The <strong>useEffect</strong> Hook allows you to<mark>perform <strong>side effects</strong>  in your components.</mark> </li>
+        <li>Some examples of side effects are: FDT
+            <ol>
+                <li>fetching data</li>
+                <li>directly updating the DOM</li>
+                <li>timers</li>
+            </ol>
+        </li>
+        <li>useEffect accepts two arguments.</li>
+        <li>The second argument is optional.</li>
+        <li>useEffect(&lt;function&gt;, &lt;dependency&gt;)</li>
+    </ol>
+
+
+
 <h3>16.3-React useContext Hook</h2>
 <h3>16.4-React useRef Hook</h2>
 <h3>16.5-React useReducer Hook</h2>
