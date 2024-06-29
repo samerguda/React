@@ -923,20 +923,77 @@ root.render(&lt;Garage /&gt;);<br>
   </div>
 
 
-<li></li>
-<li></li>
-<li></li>
+</ol>
+<!-- ====React Props====End -->
 
+<hr>
+<hr>
+<hr>
+<hr>
+
+<h2>8-React Events</h2>
+<!-- ====8-React Events====start -->
+<ol>
+<li>like HTML DOM events,React can perform actions <strong>based on user events.</strong> </li>
+<li>React has the same events as HTML: <strong>click, change, mouseover etc.</strong> </li>
+<li>React events are written in <mark>camelCase syntax</mark></li>
+<li>for example: onClick  </li>
+<li>React event <strong>handlers</strong> are written <strong>inside curly braces:</strong><mark>onClick={shoot}</mark> </li>
+
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>React event syntax</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      &lt;button onClick={shoot}&gt;Take the Shot!&lt;/button&gt;
+     
+
+    </div>
+  </div>
+
+  <div class="w3-panel w3-card w3-light-grey"> 
+    <h4>put the <mark>shoot function</mark> inside the <strong>Football component:</strong></h4>
+  
+      <div class="w3-code htmlHigh notranslate">
+        import React from 'react';<br>
+        import ReactDOM from 'react-dom/client';<br><br>
+        
+        function Football() {<br>
+          const shoot = () => {<br>
+            alert("Great Shot!");<br>
+          }<br><br>
+        
+          return (<br>
+            &lt;button onClick={shoot}&gt;Take the shot!&lt;/button&gt;<br>
+          );<br>
+        }<br><br>
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+        root.render(&lt;Football /&gt;);<br>
+        
+  
+      </div>
+    </div>
+
+
+
+<li></li>
 
 
 
 
 </ol>
-<!-- ====React Props====End -->
+
+
+<!-- ====8-React Events====End -->
+
+<hr>
+<hr>
+<hr>
+<hr>
 
 
 
-<h2>8-React Events</h2>
+
 <h2>9-React Conditional Rendering</h2>
 <h2>10-React Lists</h2>
 <h2>11-React Forms</h2>
