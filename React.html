@@ -9,6 +9,35 @@
 <!-- ====================== -->
 
     <div class="w3-container ">
+      <h2>What is React?</h2>
+      <h2>React Render HTM</h2>
+      <h2>3-Upgrade React</h2>
+      <h2>6-React Class Components</h2>
+      <h2>7-React Props</h2>
+      <h2>8-React Events</h2>
+      <h2>9-React Conditional Rendering</h2>
+      <h2>10-React Lists</h2>
+      <h2>11-React Forms</h2>
+      <h2>12-React Router</h2>
+      <h2>13-React Memo</h2>
+      <h2>14-Styling React Using CSS</h2>
+      <h2>15-Styling React Using Sass</h2>
+      <h2>16-React Hooks</h2>
+      <h3>16.1-React useState Hook</h2>
+      <h3>16.2-React useEffect Hooks</h2>
+      <h3>16.3-React useContext Hook</h2>
+      <h3>16.4-React useRef Hook</h2>
+      <h3>16.5-React useReducer Hook</h2>
+      <h3>16.6-React useCallback Hook</h2>
+      <h3>16.7-React useMemo Hook</h2>
+      <h3>16.8-React Custom Hooks</h2>
+
+
+
+
+
+
+
 <h2>What is React?</h2>
 <p>React, sometimes referred to as a frontend JavaScript framework, is a JavaScript library created by Facebook.</p>
 
@@ -68,6 +97,7 @@
   <li></li>
 </ol>
 
+
 <!-- ======= The render Method============== -->
 <h2>The render Method</h2>
 <ol>
@@ -76,6 +106,7 @@
 </ol>
 
 <hr>
+
 <h2>The render Method</h2>
 
 <div class="w3-panel w3-card w3-light-grey"> 
@@ -151,11 +182,12 @@
     </div>
   </div>
 
-<!-- ============== -->
+<!-- ======3-Upgrade Reac===3-Upgrade Reac===== -->
 <hr>
 <hr>
 <hr>
 <hr>
+<div>
 <h2>3-Upgrade React</h2>
 <p>Upgrading an existing React application to version 18 only requires two steps.</p>
 
@@ -186,7 +218,7 @@
           </div>
         </div>
 
-
+      </div>
 
 
 <hr>
@@ -194,6 +226,9 @@
 <hr>
 <hr>
 
+<!-- ====ES6====ES6===ES6====start -->
+<div>
+<!-- ====ES6====ES6===ES6==== -->
 <!-- =============== -->
 <h3>3.1-What is ES6? (CAVA DSMT)</h2>
     <ol>
@@ -222,7 +257,7 @@
    <hr>
    <hr> 
 
-   <!-- =============== -->
+   <!-- ====ES6====ES6===ES6==== -->
 <h3>3.1-React ES6 Classes</h2>
 
     <ol>
@@ -675,7 +710,13 @@
 
 <h2>3.8-React ES6 Ternary Operator</h2>
 <h2>4-React Render HTML</h2>
+
+
+
+
+
 <h2>5-React Components</h2>
+<div>
 <ol>
     <li>Components are <strong>like functions</strong> that<mark>return HTML elements.</mark> </li>
     <li>Components are independent</li>
@@ -775,12 +816,126 @@
       </div>
     </div>
 
+  </div>
+</div>
+<!-- ====-->
+<!-- ====-->
+<!-- ====-->
+<!-- ====-->
+  <hr>
+  <hr>
+  <hr>
+  <hr>
 
 
-
-
+<!-- ====React Class====start -->
 <h2>6-React Class Components</h2>
+<ol>
+
+<li>Before React 16.8, Class components were the <strong>only way</strong> to track state and lifecycle on a React component.</li>
+<li> Function components were considered <mark>"state-less".</mark></li>
+<li>With the addition of Hooks,<strong>Function components</strong> are now almost <mark>equivalent to Class components.</mark> </li>
+<li>you will probably <strong>never need</strong>  to use a Class component in React.</li>
+<li><mark>skip this section,</mark> and use Function Components instead.</li>
+
+
+
+
+</ol>
+<!-- ====React Class====End -->
+
+<hr>
+<hr>
+<hr>
+<hr>
+
+
+
 <h2>7-React Props</h2>
+<!-- ====React Props====start -->
+<ol>
+
+<li>Props are <strong>arguments</strong> passed into React <strong>components</strong> .</li>
+<li>Props are passed to components <mark>via HTML attributes.</mark> </li>
+<li>props stands for <strong>properties</strong>.</li>
+<li>React Props are like function arguments in JavaScript and <strong>attributes in HTML.</strong></li>
+<li>To <strong>send props into a component,</strong> use the same syntax as HTML attributes:</li>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4><mark>Add</mark> a "brand" attribute to the Car element:</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      const myElement = <Car brand="Ford" />;
+
+
+    </div>
+  </div>
+
+
+
+<li>The component receives the argument as a <strong>props object:</strong></li>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4><mark>Use </mark>the brand attribute in the component:</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      import React from 'react';<br>
+      import ReactDOM from 'react-dom/client';<br><br>
+
+      function Car(props) {<br>
+        return &lt;h2&gt;I am a { props.brand }!&lt;/h2&gt;;<br><br>
+      }
+
+      const myElement = <Car brand="Ford" />;<br><br>
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+      root.render(myElement);
+
+    </div>
+  </div>
+
+
+
+
+<li>how you <strong>pass data</strong> from <mark>one component to another</mark>, as parameters.</li>
+<div class="w3-panel w3-card w3-light-grey"> 
+  <h4>Send the "brand" property from the Garage component to the Car component:</h4>
+
+    <div class="w3-code htmlHigh notranslate">
+      import React from 'react';<br>
+      import ReactDOM from 'react-dom/client';<br><br>
+
+      function Car(props) {<br>
+        return &lt;h2&gt;I am a { props.brand }!&lt;/h2&gt;;<br>
+      }<br><br>
+
+      function Garage() {<br>
+        return (<br>
+        &lt;&gt;<br>
+        &lt;h1&gt;Who lives in my garage?&lt;/h1&gt;<br>
+        &lt;Car brand="Ford" /&gt;<br>
+            &lt;/&gt;<br>
+        );<br>
+      }<br><br>
+
+const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+root.render(&lt;Garage /&gt;);<br>
+
+    </div>
+  </div>
+
+
+<li></li>
+<li></li>
+<li></li>
+
+
+
+
+
+</ol>
+<!-- ====React Props====End -->
+
+
+
 <h2>8-React Events</h2>
 <h2>9-React Conditional Rendering</h2>
 <h2>10-React Lists</h2>
