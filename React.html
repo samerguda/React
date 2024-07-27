@@ -5,6 +5,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body class="w3-container">
 
+    <style>
+        .red-line {
+            border: 0;
+            height: 2px; /* Adjust the height as needed */
+            background-color: red;
+        }
+    </style>
+
 
 <!-- ====================== -->
 
@@ -709,11 +717,19 @@
     <hr>
 
 <h2>3.8-React ES6 Ternary Operator</h2>
+
+<hr>
+<hr>
+<hr>
+<hr>
 <h2>4-React Render HTML</h2>
 
 
 
-
+<hr>
+<hr>
+<hr>
+<hr>
 
 <h2>5-React Components</h2>
 <div>
@@ -1162,6 +1178,10 @@ root.render(&lt;Garage /&gt;);<br>
 <h2>14-Styling React Using CSS</h2>
 <h2>15-Styling React Using Sass</h2>
 
+<hr class="red-line">
+<hr class="red-line">
+<hr class="red-line">
+<hr class="red-line">
 
 <!-- ====16-React Hooks====start -->
 <h2>16-React Hooks</h2>
@@ -1182,9 +1202,9 @@ root.render(&lt;Garage /&gt;);<br>
               const [color, setColor] = useState("red");
                 
               return (
-                <>
-                  <h1>My favorite color is {color}!</h1>
-                  <button
+                &lt;&gt;
+                  &lt;h1&gt;My favorite color is {color}!&lt;/h1&gt;
+                  &lt;button
                     type="button"
                     onClick={() => setColor("blue")}
                   >Blue</button>
@@ -1227,7 +1247,7 @@ root.render(&lt;Garage /&gt;);<br>
 </ol>
 <!-- ====16-React Hooks====end -->
 
-
+<hr class="red-line">
 <!-- ====16.1-React useState Hook<====start -->
 <h3>16.1-React useState Hook</h2>
     <ol>
@@ -1280,25 +1300,186 @@ root.render(&lt;Garage /&gt;);<br>
     </ol>
  <!-- ====16.1-React useState Hook<====end --> 
 
-
+ <hr class="red-line">
 
 <h3>16.2-React useEffect Hooks</h2>
     <ol>
-        <li>The <strong>useEffect</strong> Hook allows you to<mark>perform <strong>side effects</strong>  in your components.</mark> </li>
+        <li>The <strong>useEffect</strong> Hook allows you to <mark>perform <strong>side effects</strong>  in your components.</mark> </li>
         <li>Some examples of side effects are: FDT
             <ol>
-                <li>fetching data</li>
-                <li>directly updating the DOM</li>
-                <li>timers</li>
+                <li>Fetching data</li>
+                <li>Directly updating the DOM</li>
+                <li>Timers</li>
             </ol>
         </li>
-        <li>useEffect accepts two arguments.</li>
-        <li>The second argument is optional.</li>
+        <li>useEffect <strong>accepts two arguments.</strong></li>
+        <li>The second argument is<mark>optional.</mark> </li>
         <li>useEffect(&lt;function&gt;, &lt;dependency&gt;)</li>
+        <li>Let's use a timer as an example.</li>
+
+        <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>Use <mark>setTimeout() </mark>to count 1 second after initial render:</h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                import { useState, useEffect } from "react";<br>
+                import ReactDOM from "react-dom/client";<br><br>
+                
+                function Timer() {<br>
+                  const [count, setCount] = useState(0);<br><br>
+                
+                  useEffect(() => {<br>
+                    setTimeout(() => {<br>
+                      setCount((count) => count + 1);<br>
+                    }, 1000);<br>
+                  });<br><br>
+                
+                  return &lt;h1&gt;I've rendered {count} times!&lt;/h1&gt;;<br>
+                }<br><br>
+                
+                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+                root.render(&lt;Timer /&gt;);<br>
+        
+            </div>
+          </div>
+          <li>But wait!! It keeps counting even though it <u>should only count once!</u></li>
+          <li><mark>useEffect</mark> runs on every render.</li>
+          <li> That means that when the count changes, a render happens,</li>
+          <li>which then triggers another effect</li>
+          <li>This is not what we want.</li>
+          <li>There are several ways to control when side effects run.</li>
+          <li>We should always include the second parameter which accepts an array. </li>
+          <li>We can optionally pass dependencies to <mark>useEffect</mark> in this array.</li>
+
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>1. No dependency passed: </h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                useEffect(() => {<br>
+                    //Runs on every render<br>
+                  });<br>
+        
+            </div>
+          </div>
+
+
+
+
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>2. An empty array:</h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                useEffect(() => {<br>
+                    //Runs only on the first render <br>
+                  }, []);<br>
+        
+            </div>
+          </div>
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>3. Props or state values:</h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                useEffect(() => { <br>
+                    //Runs on the first render<br>
+                    //And any time any dependency value changes<br>
+                  }, [prop, state]);<br>
+        
+            </div>
+          </div>
+
+          So, to fix this issue, let's only run this effect on the initial render.
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>Only run the effect on the initial render:</h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                import { useState, useEffect } from "react"; <br>
+                import ReactDOM from "react-dom/client"; <br><br>
+                
+                function Timer() { <br>
+                  const [count, setCount] = useState(0); <br><br>
+                
+                  useEffect(() => { <br>
+                    setTimeout(() => { <br>
+                      setCount((count) => count + 1); <br>
+                    }, 1000); <br>
+                  }, []); // &gt;- add empty brackets here <br><br>
+                
+                  return &lt;h1&gt;'ve rendered {count} times!&lt;/h1&gt;;<br>
+                }<br><br>
+                
+                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+                root.render(&lt;Timer /&gt;);<br>
+        
+            </div>
+          </div>
+
+
+
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>     Here is an example of a useEffect Hook that is dependent on a variable.</h4>
+            <h4>If the count variable updates, the effect will run again:</h4>
+
+            <div class="w3-code htmlHigh notranslate">
+                import { useState, useEffect } from "react"; <br>
+                import ReactDOM from "react-dom/client"; <br> <br>
+                
+                function Counter() { <br>
+                  const [count, setCount] = useState(0); <br>
+                  const [calculation, setCalculation] = useState(0); <br> <br>
+                
+                  useEffect(() => { <br>
+                    setCalculation(() => count * 2); <br>
+                  }, [count]); // &lt;- add the count variable here <br> <br>
+                
+                  return (
+                    &lt;&gt;
+                    &lt;p&gt;Count: {count}&lt;/p&gt; <br>
+                    &lt;button onClick={() => setCount((c) => c + 1)}>+&lt;/button&gt; <br>
+                    &lt;p&gt;Calculation: {calculation}&lt;/p&gt; <br>
+                    &lt;/&gt; <br> 
+                    );<br>
+                } <br> <br>
+                
+                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
+                root.render(&lt;Counter /&gt;);<br>
+        
+            </div>
+          </div>
+         
+         
+
+
+
+
+
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+
+
+
     </ol>
 
 
 
+
+
+    <hr class="red-line">
 <h3>16.3-React useContext Hook</h2>
 <h3>16.4-React useRef Hook</h2>
 <h3>16.5-React useReducer Hook</h2>
@@ -1320,3 +1501,10 @@ w3CodeColor();
 
 </body>
 </html>
+
+
+
+
+
+    <hr class="red-line">
+
