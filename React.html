@@ -1426,8 +1426,8 @@ root.render(&lt;Garage /&gt;);<br>
 
           <div class="w3-panel w3-card w3-light-grey"> 
 
-            <h4>     Here is an example of a useEffect Hook that is dependent on a variable.</h4>
-            <h4>If the count variable updates, the effect will run again:</h4>
+            <h4>     Here is an example of a <mark>useEffect</mark> Hook that is dependent on a variable.</h4>
+            <h4>If the <mark>count</mark> variable updates, the effect will run again:</h4>
 
             <div class="w3-code htmlHigh notranslate">
                 import { useState, useEffect } from "react"; <br>
@@ -1456,19 +1456,15 @@ root.render(&lt;Garage /&gt;);<br>
             </div>
           </div>
          
-         
+          If there are <u>multiple dependencies,</u>  they should be <strong>included in the useEffect dependency array.</strong>
 
 
 
 
 
+          
 
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+
 
 
 
@@ -1480,7 +1476,123 @@ root.render(&lt;Garage /&gt;);<br>
 
 
     <hr class="red-line">
-<h3>16.3-React useContext Hook</h2>
+    <hr class="red-line">
+    <hr class="red-line">
+    <hr class="red-line">
+    <hr class="red-line">
+<h3>16.3-React <mark>useContext</mark> Hook</h2>
+
+    <li>React Context is a way to <strong>manage state globally.</strong></li>
+    <li>It can be used together <mark>with the useState</mark> Hook</li>
+    <li>to share state between  <u>nested components </u> more easily than with <strong>useState alone.</strong> </li> <br><br>
+    <li>The Problem:
+        <ol>
+            <li>State should be held by the highest parent component in the stack</li>
+            <li>that requires access to the state.</li>
+            <li>To illustrate, we have many nested components.</li>
+            <li>The component at the top and bottom of the stack need access to the state.</li>
+            <li>To do this without Context,</li>
+            <li>we will need to pass the state as "props" through each nested component. </li>
+            <li>This is called "prop drilling".
+
+
+                <div class="w3-panel w3-card w3-light-grey"> 
+
+                    <h4>Passing "props" through nested components:</h4>
+        
+                    <div class="w3-code htmlHigh notranslate">
+                        import { useState } from "react"; <br>
+                        import ReactDOM from "react-dom/client";<br><br>
+                        
+                        function Component1() {<br>
+                          const [user, setUser] = useState("Jesse Hall");<br><br>
+                        
+                          return (<br>
+                            &lt;&gt;<br>
+                              &lt;h1&gt;h1&gt;{`Hello ${user}!`}&lt;/h1&gt; <br>
+                              &lt;Component2 user={user} /&gt; <br>
+                              &lt;/&gt;<br>
+                          ); <br>
+                        } <br><br>
+                        
+                        function Component2({ user }) { <br>
+                          return ( <br>
+                          &lt;&gt;<br>
+                          &lt;h1&gt;Component 2&lt;/h1&gt; <br>
+                          &lt;Component3 user={user} /&gt;   <br>
+                              &lt;/&gt;  <br>
+                          ); <br>
+                        } <br><br>
+                        
+                        function Component3({ user }) {  <br>
+                          return ( <br>
+                          &lt;&gt; <br>
+                          &lt;h1&gt;Component 3&lt;/h1&gt;  <br>
+                          &lt;Component4 user={user} /&gt; <br>
+                              &lt;/&gt; <br>
+                          ); <br>
+                        } <br><br>
+                        
+                        function Component4({ user }) { <br>
+                          return ( <br>
+                          &lt;&gt; <br>
+                          &lt;h1&gt;Component 4&lt;/h1&gt; <br>
+                          &lt;Component5 user={user} /&gt; <br>
+                              &lt;/&gt; <br>
+                          ); <br>
+                        } <br>
+                        
+                        function Component5({ user }) { <br>
+                          return ( <br>
+                          &lt;&gt; <br>
+                          &lt;h1&gt;Component 5&lt;/h1&gt;
+                          &lt;h2&gt;{`Hello ${user} again!`}&lt;/h2&gt; <br>
+                              &lt;/&gt; <br>
+                          ); <br>
+                        } <br><br>
+                        
+                        const root = ReactDOM.createRoot(document.getElementById('root')); <br>
+                        root.render(&lt;Component1 /&gt;); <br>
+                   
+                    </div>
+                  </div>
+                 
+
+
+
+
+
+
+
+
+
+            </li>
+            <li></li>
+            <li></li>
+        </ol>
+    </li>
+    <li></li>
+    <li></li>
+    <li></li>
+
+<ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+    <hr class="red-line">    <hr class="red-line">    <hr class="red-line">  
 <h3>16.4-React useRef Hook</h2>
 <h3>16.5-React useReducer Hook</h2>
 <h3>16.6-React useCallback Hook</h2>
