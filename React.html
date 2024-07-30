@@ -1558,7 +1558,11 @@ root.render(&lt;Garage /&gt;);<br>
                   </div>
                  
 
-
+                   <ol>
+                    <li>Even though components 2-4 did not need the state</li>
+                    <li>they had to pass the state along so that it could reach component 5.</li>
+         
+                   </ol>
 
 
 
@@ -1567,12 +1571,52 @@ root.render(&lt;Garage /&gt;);<br>
 
 
             </li>
-            <li></li>
-            <li></li>
+          
         </ol>
     </li>
-    <li></li>
-    <li></li>
+    <li><strong>The Solution:</strong>
+
+
+      <ol>
+        <li>The solution is to create context.</li>
+        <li>To create context, you must Import createContext and initialize it:
+
+
+
+          <div class="w3-panel w3-card w3-light-grey"> 
+
+            <h4>      </h4>
+ 
+
+            <div class="w3-code htmlHigh notranslate">
+              import { useState, createContext } from "react";<br>
+              import ReactDOM from "react-dom/client";<br><br>
+              
+              const UserContext = createContext()<br>
+ 
+             
+            </div>
+          </div>
+
+
+
+
+        </li>
+        <li>Next we'll use the <strong>Context Provider</strong> to <mark>wrap the tree of components</mark> that need the state Context.</li>
+    
+      </ol>
+
+    </li>
+    <li><strong>Context Provider:</strong>
+
+
+      <ol>
+
+        <li>Wrap child components in the Context Provider</li>
+      
+      </ol>
+
+    </li>
     <li></li>
 
 <ol>
