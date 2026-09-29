@@ -1,1666 +1,312 @@
 <!DOCTYPE html>
-<html>
-<title>React</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body class="w3-container">
-
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B1 Dutch - Vocabulair - المفردات الأساسية للعمل والحياة في بلجيكا</title>
     <style>
-        .red-line {
-            border: 0;
-            height: 2px; /* Adjust the height as needed */
-            background-color: red;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        .topic-list {
+            list-style: none;
+            padding: 0;
+        }
+        .topic-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-right: 4px solid #e67e22;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        .topic-item:hover {
+            background-color: #fdf2e9;
+        }
+        .topic-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .arabic {
+            color: #2c3e50;
+        }
+        .dutch {
+            color: #d35400;
+            font-weight: bold;
+            direction: ltr;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .copy-btn {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background-color: #d35400;
+        }
+        .copy-btn.copied {
+            background-color: #2ecc71;
         }
     </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>B1 — 2.000 Woorden / 50 Themen</h1>
+    <p class="subtitle">المفردات المناسبة للمحادثة والعمل في بلجيكا (الفلمنكية / العربية)</p>
 
-<!-- ====================== -->
-
-    <div class="w3-container ">
-      <h2>What is React?</h2>
-      <h2>React Render HTM</h2>
-      <h2>3-Upgrade React</h2>
-      <h2>6-React Class Components</h2>
-      <h2>7-React Props</h2>
-      <h2>8-React Events</h2>
-      <h2>9-React Conditional Rendering</h2>
-      <h2>10-React Lists</h2>
-      <h2>11-React Forms</h2>
-      <h2>12-React Router</h2>
-      <h2>13-React Memo</h2>
-      <h2>14-Styling React Using CSS</h2>
-      <h2>15-Styling React Using Sass</h2>
-      <h2>16-React Hooks</h2>
-      <h3>16.1-React useState Hook</h2>
-      <h3>16.2-React useEffect Hooks</h2>
-      <h3>16.3-React useContext Hook</h2>
-      <h3>16.4-React useRef Hook</h2>
-      <h3>16.5-React useReducer Hook</h2>
-      <h3>16.6-React useCallback Hook</h2>
-      <h3>16.7-React useMemo Hook</h2>
-      <h3>16.8-React Custom Hooks</h2>
-
-
-
-
-
-
-
-<h2>What is React?</h2>
-<p>React, sometimes referred to as a frontend JavaScript framework, is a JavaScript library created by Facebook.</p>
-
-</p>
-
-<hr>
-<hr>
-<h2>How does React Work?</h2>
-<p>React creates a <strong>VIRTUAL DOM in memory </strong>.React creates a VIRTUAL DOM in memory.</p>
-
-
-<hr>
-<h2>React Getting Started</h2>
-<ul>
-    <li>need <strong>npm</strong> which is included with Node.js.</li>
-</ul>
-
-<hr>
-<h2>React Directly in HTML</h2>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>HTML Example</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      &lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>
-      &lt;head&gt; <br>
-      &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;<br>
-      &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;<br>
-      &lt;script src="src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin&gt;&lt;/script&gt;<br>
-      &lt;head&gt;<br><br>
-     
-    </div>
-  </div>
-
-  <hr>
-  <hr>
-  <h2>Setting up a React Environment</h2>
-  <ol>
-    <li>If you have npx and Node.js installed</li>
-    <li> you can create a <strong>React application </strong>by using <strong>create-react-app</strong></li>
-    <li>Run this command to <strong>create a React application </strong>named my-react-app: <strong>npx create-react-app my-react-app</strong> </li>
-    <li><strong>Run</strong> the React Application: <strong> cd my-react-app </strong></li>
-  </ul>
+    <ul class="topic-list">
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">1. الوظائف والمقابلات</span> — <span class="dutch">Jobs en sollicitatiegesprekken</span></div>
+            <button class="copy-btn" onclick="copyText('Jobs en sollicitatiegesprekken Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">2. بيئة العمل</span> — <span class="dutch">Werkomgeving</span></div>
+            <button class="copy-btn" onclick="copyText('Werkomgeving Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">3. الإدارة</span> — <span class="dutch">Management en bestuur</span></div>
+            <button class="copy-btn" onclick="copyText('Management en bestuur Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">4. الاجتماعات</span> — <span class="dutch">Vergaderingen</span></div>
+            <button class="copy-btn" onclick="copyText('Vergaderingen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">5. المشاريع</span> — <span class="dutch">Projecten</span></div>
+            <button class="copy-btn" onclick="copyText('Projecten Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">6. الراتب والضرائب</span> — <span class="dutch">Loon en belastingen</span></div>
+            <button class="copy-btn" onclick="copyText('Loon en belastingen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">7. العقود</span> — <span class="dutch">Contracten</span></div>
+            <button class="copy-btn" onclick="copyText('Contracten Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">8. السكن والتعامل مع المالك</span> — <span class="dutch">Huisvesting en huurovereenkomsten</span></div>
+            <button class="copy-btn" onclick="copyText('Huisvesting en huurovereenkomsten Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">9. الهجرة والإقامة</span> — <span class="dutch">Migratie en verblijf</span></div>
+            <button class="copy-btn" onclick="copyText('Migratie en verblijf Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">10. المعاملات في البلدية</span> — <span class="dutch">Gemeentelijke administratie</span></div>
+            <button class="copy-btn" onclick="copyText('Gemeentelijke administratie Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">11. التعليم العالي والتدريب</span> — <span class="dutch">Hoger onderwijs en opleidingen</span></div>
+            <button class="copy-btn" onclick="copyText('Hoger onderwijs en opleidingen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">12. الرعاية الصحية والرعاية المتقدمة</span> — <span class="dutch">Gezondheidszorg</span></div>
+            <button class="copy-btn" onclick="copyText('Gezondheidszorg Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">13. التأمين وصندوق التأمين الصحي</span> — <span class="dutch">Verzekeringen en ziekenfonds</span></div>
+            <button class="copy-btn" onclick="copyText('Verzekeringen en ziekenfonds Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">14. الاقتصاد والتجارة</span> — <span class="dutch">Economie en handel</span></div>
+            <button class="copy-btn" onclick="copyText('Economie en handel Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">15. المال والاستثمار</span> — <span class="dutch">Geld en investeringen</span></div>
+            <button class="copy-btn" onclick="copyText('Geld en investeringen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">16. خدمات البنوك والمُعاملات</span> — <span class="dutch">Bankdiensten en transacties</span></div>
+            <button class="copy-btn" onclick="copyText('Bankdiensten en transacties Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">17. التكنولوجيا والابتكار</span> — <span class="dutch">Technologie en innovatie</span></div>
+            <button class="copy-btn" onclick="copyText('Technologie en innovatie Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">18. الإنترنت والأمان الرقمي</span> — <span class="dutch">Internet en digitale veiligheid</span></div>
+            <button class="copy-btn" onclick="copyText('Internet en digitale veiligheid Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">19. الأخبار الصحفية والأحداث الجارية</span> — <span class="dutch">Nieuws en actualiteit</span></div>
+            <button class="copy-btn" onclick="copyText('Nieuws en actualiteit Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">20. المجتمع والتكامل</span> — <span class="dutch">Samenleving en integratie</span></div>
+            <button class="copy-btn" onclick="copyText('Samenleving en integratie Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">21. الحقوق المدنية والسياسة</span> — <span class="dutch">Burgerrechten en politiek</span></div>
+            <button class="copy-btn" onclick="copyText('Burgerrechten en politiek Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">22. البيئة واستدامة الموارد</span> — <span class="dutch">Milieu en duurzaamheid</span></div>
+            <button class="copy-btn" onclick="copyText('Milieu en duurzaamheid Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">23. الطاقة والترشيد</span> — <span class="dutch">Energie en besparing</span></div>
+            <button class="copy-btn" onclick="copyText('Energie en besparing Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">24. النقل والمواضيع المرورية</span> — <span class="dutch">Transport en verkeer</span></div>
+            <button class="copy-btn" onclick="copyText('Transport en verkeer Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">25. المدن والريف</span> — <span class="dutch">Stad en platteland</span></div>
+            <button class="copy-btn" onclick="copyText('Stad en platteland Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">26. العلاقات الاجتماعية والأسرية</span> — <span class="dutch">Sociale en familiale relaties</span></div>
+            <button class="copy-btn" onclick="copyText('Sociale en familiale relaties Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">27. السمات الشخصية والسلوك</span> — <span class="dutch">Persoonlijkheidstrekken en gedrag</span></div>
+            <button class="copy-btn" onclick="copyText('Persoonlijkheidstrekken en gedrag Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">28. المشاعر والتعاطف</span> — <span class="dutch">Emoties en empathie</span></div>
+            <button class="copy-btn" onclick="copyText('Emoties en empathie Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">29. المشاكل اليومية والإزعاج</span> — <span class="dutch">Dagelijkse problemen en overlast</span></div>
+            <button class="copy-btn" onclick="copyText('Dagelijkse problemen en overlast Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">30. الشكاوى والاعتراضات</span> — <span class="dutch">Klachten en bezwaren</span></div>
+            <button class="copy-btn" onclick="copyText('Klachten en bezwaren Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">31. الاتفاق والاختلاف</span> — <span class="dutch">Akkoord gaan en van mening verschillen</span></div>
+            <button class="copy-btn" onclick="copyText('Akkoord gaan en van mening verschillen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">32. التعبير عن الرأي والحجج</span> — <span class="dutch">Mening uiten en argumenteren</span></div>
+            <button class="copy-btn" onclick="copyText('Mening uiten en argumenteren Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">33. الأسباب والنتائج</span> — <span class="dutch">Oorzaken en gevolgen</span></div>
+            <button class="copy-btn" onclick="copyText('Oorzaken en gevolgen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">34. الاحتمالات والترجيحات</span> — <span class="dutch">Mogelijkheden en waarschijnlijkheid</span></div>
+            <button class="copy-btn" onclick="copyText('Mogelijkheden en waarschijnlijkheid Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">35. الخطط المستقبلية والطموحات</span> — <span class="dutch">Toekomstplannen en ambities</span></div>
+            <button class="copy-btn" onclick="copyText('Toekomstplannen en ambities Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">36. التجارب السابقة والذكريات</span> — <span class="dutch">Eerdere ervaringen en herinneringen</span></div>
+            <button class="copy-btn" onclick="copyText('Eerdere ervaringen en herinneringen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">37. القانون والأحكام الأساسية</span> — <span class="dutch">Wetgeving en basisrechten</span></div>
+            <button class="copy-btn" onclick="copyText('Wetgeving en basisrechten Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">38. أساليب الحياة والعافية</span> — <span class="dutch">Levensstijl en welzijn</span></div>
+            <button class="copy-btn" onclick="copyText('Levensstijl en welzijn Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">39. الفنون والثقافة البلجيكية</span> — <span class="dutch">Kunst en Belgische cultuur</span></div>
+            <button class="copy-btn" onclick="copyText('Kunst en Belgische cultuur Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">40. الرياضة والفعاليات الكبرى</span> — <span class="dutch">Sport en grote evenementen</span></div>
+            <button class="copy-btn" onclick="copyText('Sport en grote evenementen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">41. العطلات والأنشطة الترفيهية</span> — <span class="dutch">Vakantie en vrije tijd</span></div>
+            <button class="copy-btn" onclick="copyText('Vakantie en vrije tijd Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">42. التسوق عبر الإنترنت والخدمات اللوجستية</span> — <span class="dutch">Online shoppen en logistiek</span></div>
+            <button class="copy-btn" onclick="copyText('Online shoppen en logistiek Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">43. خدمة العملاء والدعم</span> — <span class="dutch">Klantendienst en ondersteuning</span></div>
+            <button class="copy-btn" onclick="copyText('Klantendienst en ondersteuning Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">44. حل النزاعات والتفاوض</span> — <span class="dutch">Conflictoplossing en onderhandelen</span></div>
+            <button class="copy-btn" onclick="copyText('Conflictoplossing en onderhandelen Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">45. العادات والتقاليد الاجتماعية</span> — <span class="dutch">Gewoonten en sociale gewoontes</span></div>
+            <button class="copy-btn" onclick="copyText('Gewoonten en sociale gewoontes Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">46. المهارات والقدرات الذاتية</span> — <span class="dutch">Vaardigheden en competenties</span></div>
+            <button class="copy-btn" onclick="copyText('Vaardigheden en competenties Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">47. تنظيم الوقت والإنتاجية</span> — <span class="dutch">Tijdsbeheer en productiviteit</span></div>
+            <button class="copy-btn" onclick="copyText('Tijdsbeheer en productiviteit Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">48. التطوع والعمل المجتمعي</span> — <span class="dutch">Vrijwilligerswerk en gemeenschap</span></div>
+            <button class="copy-btn" onclick="copyText('Vrijwilligerswerk en gemeenschap Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">49. الاتصالات والمراسلات الرسمية</span> — <span class="dutch">Officiële communicatie en brieven</span></div>
+            <button class="copy-btn" onclick="copyText('Officiële communicatie en brieven Vocabulair', this)">نسخ</button>
+        </li>
+        <li class="topic-item">
+            <div class="topic-text"><span class="arabic">50. التقييم والملاحظات الشخصية</span> — <span class="dutch">Evaluatie en feedback</span></div>
+            <button class="copy-btn" onclick="copyText('Evaluatie en feedback Vocabulair', this)">نسخ</button>
+        </li>
+    </ul>
 </div>
-
-<!-- ======= React Render HTML============== -->
-
-<h2>React Render HTM</h2>
-<ol>
-  <li>by using a function called <strong>createRoot()</strong></li>
-  <li>its method <strong>render()</strong></li>
-</ol>
-<!-- ======= The createRoot Function============== -->
-<h2>The createRoot Function</h2>
-<ol>
-  <li>The createRoot() function takes one argument <strong> an HTML element</strong></li>
-  <li></li>
-</ol>
-
-
-<!-- ======= The render Method============== -->
-<h2>The render Method</h2>
-<ol>
-  <li>called to <strong>>define the React component</strong> that should be rendered</li>
-  <li> render where? <strong>index.html</strong> in the folder <strong>public</strong> in the <strong>&lt;div&gt;</strong> </li>
-</ol>
-
-<hr>
-
-<h2>The render Method</h2>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>Display a paragraph inside an element with the id of "root":</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      const container = document.getElementById('root');<br>
-      const root = ReactDOM.createRoot(container);<br>
-      root.render(<p>Hello</p>);
-     
-    </div>
-  </div>
-
-
-  <div class="w3-panel w3-card w3-light-grey"> 
-    <h4>The result is displayed in the &lt;div id="root"&gt; element:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        &lt;body&gt;<br>
-          &lt;div id="root"&gt;&lt;/div&gt;<br>
-          &lt;/body&gt;
-       
-      </div>
-    </div>
-  
-
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-
-    
-        <div class="w3-code htmlHigh notranslate">
-          import React from 'react';<br>
-          import ReactDOM from 'react-dom/client';<br><br><br>
-          const container = document.getElementById('root');<br>
-          const root = ReactDOM.createRoot(container);<br>
-          root.render(&lt;p&gt;Hello&lt;/p&gt;);
-         
-        </div>
-      </div>
-
-<hr>
-<hr>
-
-
-<h2>The HTML Code</h2>
-
-===============
-
-<h2>Example</h2>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>Create a variable that contains HTML code and display it in the "root" node:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      const myelement = (<br>
-      &lt;table&gt; <br>
-      &lt;tr&gt;<br>
-      &lt;th&gt;Name&lt;/th&gt;<br>
-      &lt;/tr&gt;<br>
-      &lt;tr&gt;<br>
-      &lt;th&gt;Ayman&lt;/th&gt;<br>
-      &lt;/tr&gt;<br>
-      &lt;tr&gt;<br>
-      &lt;th&gt;Ahmed&lt;/th&gt;<br>
-      &lt;/tr&gt;<br>
-      &lt;/table&gt; <br>
-      );
-<br><br>
-
-      const container = document.getElementById('root');<br>
-      const root = ReactDOM.createRoot(container);<br>
-      root.render(myelement);
-    </div>
-  </div>
-
-<!-- ======3-Upgrade Reac===3-Upgrade Reac===== -->
-<hr>
-<hr>
-<hr>
-<hr>
-<div>
-<h2>3-Upgrade React</h2>
-<p>Upgrading an existing React application to version 18 only requires two steps.</p>
-
-<h3>Step 1: Install React 18</h3>
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>To install the latest version, from your project folder run the following from the terminal:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        npm i react@latest react-dom@latest
-      </div>
-    </div>
-<hr>
-    <h3>Step 2: Use the new root API</h3>
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-        <h4>In order to take advantage of React 18's concurrent features you'll need to use <strong>the new root API</strong> for client rendering.</h4>
-      
-          <div class="w3-code htmlHigh notranslate">
-            // Before <br>
-            import ReactDOM from 'react-dom';<br>
-            ReactDOM.render(&lt;App /&gt;, document.getElementById('root')); <br>
-
-
-            // After <br>
-            import ReactDOM from 'react-dom/client';<br>
-            const root = ReactDOM.createRoot(document.getElementById('root')); <br>
-            root.render(&lt;App /&gt;);
-          </div>
-        </div>
-
-      </div>
-
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-<!-- ====ES6====ES6===ES6====start -->
-<div>
-<!-- ====ES6====ES6===ES6==== -->
-<!-- =============== -->
-<h3>3.1-What is ES6? (CAVA DSMT)</h2>
-    <ol>
-        <li>ES6 stands for ECMAScript 6.</li>
-        
-    </ol>
-
-    <h3>3.2-What are the new features in ES6?</h2>
-        <ol>
-            <li>Classes</li>
-            <li>Arrow Functions</li>
-            <li>Variables (let, const, var)</li>
-            <li>Destructuring</li>
-            <li>Modules</li>
-            <li>Ternary Operator</li>
-            <li>Spread Operator</li>
-            
-        </ol>
-
-
-
-
-
-   <hr>
-   <hr>
-   <hr>
-   <hr> 
-
-   <!-- ====ES6====ES6===ES6==== -->
-<h3>3.1-React ES6 Classes</h2>
-
-    <ol>
-        <li>A class is a type of function</li>
-        <li>but instead of using the keyword <strong>function</strong></li>
-        <li>we use the keyword <strong>class</strong> </li>
-        <li>the properties are assigned inside a <strong>constructor()</strong>  method.</li>
-        <li></li>
-    </ol>
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-        <h4>Classes Example</h4>
-      
-          <div class="w3-code htmlHigh notranslate">
-            class Car { <br>
-                constructor(name) { <br>
-                    this.brand = name; <br>
-                }<br>
-            }
-          </div>
-        </div>
-
-
-
-
-        <div class="w3-panel w3-card w3-light-grey"> 
-            <h4>Create an object called "mycar" based on the Car class:</h4>
-          
-              <div class="w3-code htmlHigh notranslate">
-                &lt;!DOCTYPE html&gt;<br>
-                &lt;html&gt;<br><br>
-                
-                &lt;body&gt;<br><br>
-                  
-                &lt;script&gt;<br>
-                class Car { <br>
-                    constructor(name)<br>
-                      this.brand = name; <br>
-                    }
-                }
-    
-                const mycar = new Car("Ford"); <br><br>
-
-                document.write(mycar.brand);<br>
-                &lt;/script&gt;<br><br>
-
-            &lt;/body&gt;<br>
-            &lt;/html&gt;<br>
-              </div>
-            </div>
-
-
-            <div class="w3-panel w3-card w3-light-grey"> 
-                <h4>Create a method named "present":</h4>
-              
-                  <div class="w3-code htmlHigh notranslate">
-
-                    &lt;html&gt;<br><br>
-                
-                    &lt;body&gt;<br><br>
-
-                    class Car { <br>
-                        constructor(name) { <br>
-                            this.brand = name; <br>
-                        }<br>
-                    }<br><br>
-
-                    present() {<br>
-                        return 'I have a ' + this.brand;<br>
-                    }<br>
-                }<br>
-                const mycar = new Car("Ford");<br>
-                mycar.present();<br>
-                &lt;/script&gt;<br><br>
-
-                &lt;/body&gt;<br>
-                &lt;/html&gt;<br>
-
-                  </div>
-                </div>
-
-
-
-
-    <hr>
-    <hr>
-    <hr>
-    <hr> 
- 
-    <!-- =============== -->
-
-<h3>3.2-React ES6 Arrow Functions</h2>
-    <ol>
-        <li>Arrow functions allow us to write <strong>shorter function syntax</strong>:</li>
-    </ol>
-
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-        <h4>Arrow Function</h4>
-      
-          <div class="w3-code htmlHigh notranslate">
-            &lt;!DOCTYPE html&gt;<br>
-            &lt;html&gt;<br><br>
-                
-            &lt;body&gt;<br><br>
-
-                &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
-
-                &lt;script&gt;&lt;br&gt;<br>
-         hello = () => {<br>
-            return "Hello world!"<br>
-         }<br><br>
-
-         document.getElementById("demo").innerHTML = hello();<br>
-         &lt;/script&gt;<br><br>
-
-        &lt;/body&gt;<br>
-        &lt;/html&gt;<br>
-
-
-          </div>
-        </div>
-
-
-
-    <hr>
-    <hr>
-    <hr>
-    <hr> 
- 
-    <!-- =============== -->
-
-
-
-
-<h3>3.3-React ES6 Variables</h2>
-<h3>3.4-React ES6 Array Methods</h2>
-
-    <ol>
-       <li>There are many JavaScript array methods.</li>
-       <li>One of the most useful in React is the <strong> .map() array method.</strong> </li>
-       <li>The .map() method allows you to <strong>run a function </strong>   </li>
-       <li>returning a new array as the result</li>
-       <li>In React,map() can be used to generate lists</li>
-       <li></li>
-       <li></li>
-    </ol>
-
-
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Generate a list of items from an array:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        import React from 'react'; <br>
-        import ReactDOM from 'react-dom/client';<br>
-        const myArray = ['apple', 'banana', 'orange'];<br><br>
-
-        const myList = myArray.map((item) => &lt;p&gt;{item}&lt;/p&gt;)<br><br>
-
-        const container = document.getElementById('root');<br>
-        const root = ReactDOM.createRoot(container);<br>
-        root.render(myList);
-        
-      </div>
-    </div>
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-<h3>3.5-React ES6 Destructuring</h2>
-<ol>
-    <li>We may have an <strong>array</strong> <strong>object</strong>  that we are working with, but we only <strong>need some of the items </strong>contained in these.</li>
-  
-</ol>
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>assigning array items to a variable With destructuring:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        const vehicles = ['mustang', 'f-150', 'expedition']; <br><br>
-        const [car, truck, suv] = vehicles;
-      
-      </div>
-    </div>
-
-
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-        <h4>If we only want the car and suv we can simply leave out the truck <strong>but keep the comma</strong></h4>
-      
-          <div class="w3-code htmlHigh notranslate">
-            const vehicles = ['mustang', 'f-150', 'expedition']; <br><br>
-            const [car,, suv] = vehicles;
-          
-          </div>
-        </div>
-
-
-        <div class="w3-panel w3-card w3-light-grey"> 
-            <h4>Destructuring comes in handy when a <strong>function returns an array:</strong>  <strong> </strong></h4>
-          
-              <div class="w3-code htmlHigh notranslate">
-                <!DOCTYPE html>
-                <html>
-
-                <body>
-                
-                &lt;script&gt;<br>
-                function calculate(a, b) { <br>
-                    const add = a + b;<br>
-                    const subtract = a - b;<br>
-                    const multiply = a * b;<br>
-                    const divide = a / b;<br><br>
-
-                    return [add, subtract, multiply,divide];<br>
-                }<br><br>
-
-                const [add, subtract, multiply , divide]= calculate(4,7);<br>
-                document.write("&lt;p&gt;Sum: " + add + "&lt;/p&gt;");<br>
-                document.write("&lt;p&gt;Difference " + subtract + "&lt;/p&gt;");<br>
-                document.write("&lt;p&gt;Product: " + multiply + "&lt;/p&gt;");<br>
-                document.write("&lt;p&gt;Quotient " + divide + "&lt;/p&gt;");<br><br>
-            
-                &lt;/script&gt;<br><br>
-
-                &lt;/body&gt;<br>
-                &lt;/html&gt;<br>  
-                    
-              
-              </div>
-            </div>
-            
-            <div class="w3-panel w3-card w3-light-grey"> 
-                <h4>Destructring Objects : here is the old way of using a function <strong>before</strong></h4>
-              
-                  <div class="w3-code htmlHigh notranslate">
-                    const vehicleOne = {
-                        brand: 'Ford',
-                        model: 'Mustang',
-                        type: 'car',
-                        year :2024,
-                        color: 'red'
-
-                    }
-                    myVehicle(vehicleOne);
-
-                    //old way 
-                    function myVehicle(vehicleOne) {
-                        const message = 'My' + vehicle.type + 'is a ' + vehicle.color + ' '+ vehicle.color + ' ' + vehicle.brand + ' '+ vehicle.model + ' ' ;
-                    }
-                    
-                  </div>
-                </div>
-            
-
-
-                <div class="w3-panel w3-card w3-light-grey"> 
-                    <h4>Here is the new way of using an object insde a function with destructing :</h4>
-                  
-                      <div class="w3-code htmlHigh notranslate">
-                        &lt;!DOCTYPE html&gt;<br>
-                        &lt;html&gt;<br><br>
-
-                        &lt;body&gt;<br>
-                          &lt;script&gt;<br>
-                          &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
-
-                       const vehicleOne = {<br>
-                        brand: 'Ford',<br>
-                        model: 'Mustang',<br>
-                        type: 'car',<br>
-                        year: 2021,<br>
-                        color: 'red'<br>
-                       }<br><br>
-                        
-                       myVehicle(vehicleone);<br><br>
-                       
-                       function myVehicle ({type, color , brand , model}) {<br>
-                        const message = 'My ' +  type + ' is a ' + color + ' ' + brand + ' ' + model + '.';<br>
-                       }<br><br>
-
-                       document.getElementById("demo").innerHTML = message;<br>
-                    }<br>
-                    &lt;/script&gt;<br><br>
-
-                       &lt;/body&gt;<br>
-                       &lt;/html&gt;<br>
-
-                      </div>
-                    </div>
-<hr>
-<hr>
-<hr>
-<hr>
-
-
-
-
-<h3>3.6-React ES6 Spread Operator</h2>
-
-
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-<h3>3.7-React ES6 Modules</h2>
-
-<ol>
- <li>JavaScript modules allow you to <strong>break</strong>  up your code into separate files.</li>
- <li>ES Modules rely on the <strong>import</strong> and <strong>export</strong> statements.</li>
- <li>You can <strong>export</strong> a <mark>function</mark> or <mark>variable</mark> from any <strong>file.</strong> </li>
- <li>There are <strong>two</strong> types of exports:<mark>Named</mark>  and <mark>Default.</mark>Default<mark>(ND).</mark></li>
- <li>Let us <strong>create a file</strong> named <mark>person.js</mark></li>
- 
-</ol>
-
-<h4>A-Named Exports</h4>
-<p>You can create named exports two ways:</p>
-<ol>
-  <li>In-line individually,</li>
-  <li> all at once at the bottom.</li>
-
-</ol>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>In-line individually,</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      export const name = "Jesse"<br>
-      export const age = 40 <br>
-    
-    </div>
-  </div>
-
-<hr>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>All at once at the bottom:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      const name = "Jesse"<br>
-      const age = 40 <br><br>
-
-      export { name, age }
-    
-    </div>
-  </div>
-
-  <hr>
-  <h4>B-Default Exports</h4>
-<ol>
-  <li>Let us create another file, named message.js</li>
-  <li>use the file for demonstrating default export.</li>
-  <li>You can only have <mark>one default export in a file.</mark></li>
-
-</ol>
-<hr>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>Default Exports Example file name: message.js </h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      const message = () => {<br>
-      const name = "Jesse" <br>
-      const age = 40;<br>
-      return name + ' is ' + age + 'years old';<br>
-      }; <br> <br>
-
-      export default message;
-    
-    </div>
-  </div>
-<hr>
-<hr>
-<h4>Import</h4>
-<ol>
-  <li>You can <strong>import</strong> modules into a file <mark>in two ways</mark></li>
-  <li> based on if they are <strong>named exports</strong> or <strong>default exports.</strong></li>
-  <li><strong>Named exports</strong> must be destructured using <mark>curly braces.</mark></li>
-  <li>Default exports <strong>do not.</strong></li>
-</ol>
-
-<hr>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>Import named exports from the file person.js:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      &lt;!DOCTYPE html&gt; <br>
-      &lt;html&gt;<br><br>
-
-      &lt;body&gt;<br><br>
-
-      &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
-
-      &lt;script type="module"&gt;<br>
-        import {name, age } from "./person.js;"<br><br>
-
-        document.getElementById("demo").innerHTML = "My name is " + name;<br>
-        document.getElementById("demo").innerHTML += ", I am " + age + ".";<br><br>
-
-        &lt;/script&gt;<br><br>
-
-        &lt;/body&gt;<br>
-        &lt;/html&gt;<br>
-
-    
-    </div>
-  </div>
-
-
-  <hr>
-
-  <div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Import a <mark>default export </mark>from the file <strong>message.js:</strong></h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        &lt;!DOCTYPE html&gt;<br>
-        &lt;html&gt;<br><br>
-
-        &lt;body&gt;<br><br>
-
-        &lt;p id="demo"&gt;&lt;/p&gt;<br><br>
-
-        &lt;script type="module"&gt;<br>
-     import message from "./message.js";<br><br>
-
-     document.getElementById("demo").innerHTML = message();<br><br>
-
-     &lt;/script&gt;<br><br>
-
-     &lt;/body&gt;<br>
-     &lt;/html&gt;<br>
-
-      </div>
-    </div>
-
-
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-
-<h2>3.8-React ES6 Ternary Operator</h2>
-
-<hr>
-<hr>
-<hr>
-<hr>
-<h2>4-React Render HTML</h2>
-
-
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-<h2>5-React Components</h2>
-<div>
-<ol>
-    <li>Components are <strong>like functions</strong> that<mark>return HTML elements.</mark> </li>
-    <li>Components are independent</li>
-    <li>Components are reusable bits of code.</li>
-    <li>Components come in <strong>two types</strong> , <mark>Class components</mark> and <mark>Function components</mark>(CF)  </li>
-    <li>When <strong>creating a React component,</strong> the component's name MUST start with an <mark>upper case </mark>letter.</li>
-   
-</ol>
-
-<hr>
-<h3>A-Class Component</h3>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Create a Class component called <strong>Car</strong></h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        class Car extends React.component {<br>
-            render() {<br>
-                return <h2> Hello, this is my Car</h2>;<br>
-            }<br>
-        }
-      
-      </div>
-    </div>
-
-
-
-
-<h3>B-Function Component</h3>
-<ol>
-    <li>Function components can be written using much <strong>less code, are easier</strong> than the class components</li>
-    
-</ol>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Create a Function component called <strong>Car</strong></h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-       function Car(){ <br>
-        return <h2>Hi, I am a React</h2><br>
-       }<br>
-      
-      </div>
-    </div>
-  
-<hr>
-
-<h3>Rendering a Component</h3>
-<ol>
-    <li>Now your React application has a <strong>component called Car,</strong></li>
-    <li>this component returns an <strong>&lt;h2&gt; element.</strong> </li>
-    <li>To use this component in your application <strong>use similar syntax </strong>as normal HTML:<mark> &lt;Car /&gt;</mark></li>
-</ol>
-
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Display the <strong>Car component</strong>  in the "root" element: </h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        import React from 'react';<br>
-        import ReactDOM from 'react-dom/client';<br><br>
-
-        function Car() {<br>
-            return &lt;h2&gt; hi , i am a React Developer!&lt;/h2&gt;;<br>
-        }<br><br>
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-        root.render(&lt;car/&gt;);
-      
-      </div>
-    </div>
-
-<hr>
-<h3>Props</h3>
-<ol>
-    <li>Components can be passed as props</li>
-    <li>props stands for <strong>properties</strong></li>
-    <li>Props are like function <mark>arguments</mark></li>
-    <li>you send <strong>the props (arguments)</strong> into the component <strong>as attributes.</strong></li>
-    
-</ol>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Use an <strong>attribute</strong> to pass a <strong>color</strong> to the Car component </h4>
-    <h4>use it in the render()function :</h4>
-      <div class="w3-code htmlHigh notranslate">
-        import React form 'react';<br>
-        import ReactDOM  from 'react-dom/client';<br><br>
-
-
-                function Car (props) {<br>
-            return &lt;h2&lt;I am a {props.color} Car!&lt;/h2&lt;;<br><br>
-        }
-      
-        const root = ReactDOM.creatRoot(document.getElementById('root'));<br>
-        root.render(&lt;car color="red"/&gt;);<br>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- ====-->
-<!-- ====-->
-<!-- ====-->
-<!-- ====-->
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-
-
-<!-- ====React Class====start -->
-<h2>6-React Class Components</h2>
-<ol>
-
-<li>Before React 16.8, Class components were the <strong>only way</strong> to track state and lifecycle on a React component.</li>
-<li> Function components were considered <mark>"state-less".</mark></li>
-<li>With the addition of Hooks,<strong>Function components</strong> are now almost <mark>equivalent to Class components.</mark> </li>
-<li>you will probably <strong>never need</strong>  to use a Class component in React.</li>
-<li><mark>skip this section,</mark> and use Function Components instead.</li>
-
-
-
-
-</ol>
-<!-- ====React Class====End -->
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-
-
-<h2>7-React Props</h2>
-<!-- ====React Props====start -->
-<ol>
-
-<li>Props are <strong>arguments</strong> passed into React <strong>components</strong> .</li>
-<li>Props are passed to components <mark>via HTML attributes.</mark> </li>
-<li>props stands for <strong>properties</strong>.</li>
-<li>React Props are like function arguments in JavaScript and <strong>attributes in HTML.</strong></li>
-<li>To <strong>send props into a component,</strong> use the same syntax as HTML attributes:</li>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4><mark>Add</mark> a "brand" attribute to the Car element:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      const myElement = <Car brand="Ford" />;
-
-
-    </div>
-  </div>
-
-
-
-<li>The component receives the argument as a <strong>props object:</strong></li>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4><mark>Use </mark>the brand attribute in the component:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      import React from 'react';<br>
-      import ReactDOM from 'react-dom/client';<br><br>
-
-      function Car(props) {<br>
-        return &lt;h2&gt;I am a { props.brand }!&lt;/h2&gt;;<br><br>
-      }
-
-      const myElement = <Car brand="Ford" />;<br><br>
-
-      const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-      root.render(myElement);
-
-    </div>
-  </div>
-
-
-
-
-<li>how you <strong>pass data</strong> from <mark>one component to another</mark>, as parameters.</li>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>Send the "brand" property from the Garage component to the Car component:</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      import React from 'react';<br>
-      import ReactDOM from 'react-dom/client';<br><br>
-
-      function Car(props) {<br>
-        return &lt;h2&gt;I am a { props.brand }!&lt;/h2&gt;;<br>
-      }<br><br>
-
-      function Garage() {<br>
-        return (<br>
-        &lt;&gt;<br>
-        &lt;h1&gt;Who lives in my garage?&lt;/h1&gt;<br>
-        &lt;Car brand="Ford" /&gt;<br>
-            &lt;/&gt;<br>
-        );<br>
-      }<br><br>
-
-const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-root.render(&lt;Garage /&gt;);<br>
-
-    </div>
-  </div>
-
-
-</ol>
-<!-- ====React Props====End -->
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-<h2>8-React Events</h2>
-<!-- ====8-React Events====start -->
-<ol>
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>React event syntax</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      &lt;button onClick={shoot}&gt;Take the Shot!&lt;/button&gt;
-     
-
-    </div>
-  </div>
-<li>like HTML DOM events,React can perform actions <strong>based on user events.</strong> </li>
-<li>React has the same events as HTML: <strong>click, change, mouseover etc.</strong> </li>
-<li>React events are written in <mark>camelCase syntax</mark></li>
-<li>for example: onClick  </li>
-<li>React event <strong>handlers</strong> are written <strong>inside curly braces:</strong><mark>onClick={shoot}</mark> </li>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-  <h4>React event syntax</h4>
-
-    <div class="w3-code htmlHigh notranslate">
-      &lt;button onClick={shoot}&gt;Take the Shot!&lt;/button&gt;
-     
-
-    </div>
-  </div>
-
-  <div class="w3-panel w3-card w3-light-grey"> 
-    <h4>put the <mark>shoot function</mark> inside the <strong>Football component:</strong></h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        import React from 'react';<br>
-        import ReactDOM from 'react-dom/client';<br><br>
-        
-        function Football() {<br>
-          const shoot = () => {<br>
-            alert("Great Shot!");<br>
-          }<br><br>
-        
-          return (<br>
-            &lt;button onClick={shoot}&gt;Take the shot!&lt;/button&gt;<br>
-          );<br>
-        }<br><br>
-        
-        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-        root.render(&lt;Football /&gt;);<br>
-        
-  
-      </div>
-    </div>
-
-
-
-<li></li>
-
-
-
-
-</ol>
-
-
-<!-- ====8-React Events====End -->
-
-<hr>
-<hr>
-<hr>
-<hr>
-
-
-
-<!-- ====8-React Conditional Rendering====start -->
-<h2>9-React Conditional Rendering</h2>
-<ol>
-<li>In React, you can <strong>conditionally</strong> render components</li>
-<li>We can use the <mark>if JavaScript operator </mark>to decide which component to render.</li>
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>We'll use these two components:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        function MissedGoal() {<br>
-            return &lt;h1&gt;MISSED!&lt;/h1&gt;;<br>
-          }<br><br>
-          
-          function MadeGoal() {<br>
-            return &lt;h1&gt;Goal!&lt;/h1&gt;;<br>
-          }<br>
-  
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-        <h4>Now, we'll create <strong>another component</strong>that chooses which component to render <mark>based on a condition:</mark> </h4>
-      
-          <div class="w3-code htmlHigh notranslate">
-            import React from 'react';<br>
-            import ReactDOM from 'react-dom/client';<br><br>
-            
-            function MissedGoal() {<br>
-                return &lt;h1>MISSED!&lt;/h1&gt;;<br>
-            }<br><br>
-            
-            function MadeGoal() {<br>
-                return &lt;h1&gt;GOAL!&lt;/h1&gt;;<br>
-            }<br><br>
-            
-            function Goal(props) {<br>
-              const isGoal = props.isGoal;<br>
-              if (isGoal) {<br>
-                return &lt;MadeGoal/&gt;;<br>
-              }<br>
-              return &lt;MissedGoal/&gt;;<br>
-            }<br><br>
-            
-            const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-            root.render(&lt;Goal isGoal={false} /&gt;);<br>
-      
-          </div>
-        </div>
-
-
-
-
-</ol>
-<!-- ====8-React ====8-React Events====End -->
-
-
-
-<!-- ====8-React Lists====start -->
-<h2>10-React Lists</h2>
-<ol>
-<li>In React, you will <strong>render lists</strong> with some <mark>type of loop.</mark> </li>
-<li>The JavaScript <mark>map() array method </mark>is generally the <strong>preferred method.</strong> </li>
-
-
-<div class="w3-panel w3-card w3-light-grey"> 
-    <h4>Let's <strong> render all </strong>of the cars from our garage:</h4>
-  
-      <div class="w3-code htmlHigh notranslate">
-        import React from 'react';<br>
-        import ReactDOM from 'react-dom/client';<br><br>
-        
-        function Car(props) {<br>
-          return &lt;li&gt;I am a { props.brand }&lt;/li&gt;;<br>
-        }<br><br>
-        
-        function Garage() {<br>
-          const cars = ['Ford', 'BMW', 'Audi'];<br>
-          return (<br>
-          &lt;&gt;v
-          &lt;h1&gt;Who lives in my garage?&lt;/h&gt;<br>
-          &lt;ul&gt;<br>
-                {cars.map((car) => &lt;Car brand={car} /&gt;)}<br>
-                &lt;/ul&gt;<br>
-                &lt;/&gt;<br>
-          );<br>
-        }<br>
-        
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(&lt;Garage /&gt;);
-        
-        /*
-        If you run this example in your create-react-app,
-        you will receive a warning that there is no "key" provided for the list items.
-        */
-        
-  
-      </div>
-    </div>
-
-
-
-<li>When you run this code in your <strong>create-react-app,</strong></li>
-<li>it will work but you will receive a <strong>warning</strong> that there is <strong>no "key" provided</strong> for the list items.</li>
-<li><strong>Keys</strong> allow React to <mark>keep track of elements</mark> </li>
-<li>This way, <strong>if an item is updated </strong>or removed, <strong>only that item will be re-rendered</strong>  instead of the entire list.</li>
-<li>Keys need to be <mark>unique </mark>to <strong>each sibling.</strong> </li>
-<li>But they can be <strong>duplicated globally.</strong> </li>
-<li>the key should be a unique <strong>ID</strong> assigned to each item</li>
-
-<div class="w3-panel w3-card w3-light-grey"> 
-
-  
-      <div class="w3-code htmlHigh notranslate">
-        import React from 'react';<br>
-        import ReactDOM from 'react-dom/client';<br><br>
-        
-        function Car(props) {<br>
-          return <li>I am a { props.brand }</li>;<br>
-        }<br><br>
-        
-        function Garage() {<br>
-          const cars = [<br>
-            {id: 1, brand: 'Ford'},<br>
-            {id: 2, brand: 'BMW'},<br>
-            {id: 3, brand: 'Audi'}<br>
-          ];<br>
-          return (<br>
-            <><br>
-                <h1>Who lives in my garage?</h1><br>
-                <ul><br>
-                {cars.map((car) => <Car key={car.id} brand={car.brand} />)}<br>
-              </ul><br>
-            </><br>
-          );<br>
-        }<br><br>
-        
-        const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-        root.render(<Garage />);<br>
-  
-      </div>
-    </div>
-
-
-<li></li>
-<li></li>
-<li></li>
-
-
-</ol>
-
-<!-- ====8-React Lists====end -->
-
-<h2>11-React Forms</h2>
-<h2>12-React Router</h2>
-<h2>13-React Memo</h2>
-<h2>14-Styling React Using CSS</h2>
-<h2>15-Styling React Using Sass</h2>
-
-<hr class="red-line">
-<hr class="red-line">
-<hr class="red-line">
-<hr class="red-line">
-
-<!-- ====16-React Hooks====start -->
-<h2>16-React Hooks</h2>
-<ol>
-    <li>Hooks allow <strong>function components</strong>  to have <mark>access to state </mark>and other React features</li>
-    <li>Because of this, class components are generally <strong>no longer needed.</strong> </li>
-    <li>Although Hooks generally replace class components,</li>
-    <li>Hooks allow us to <mark>"hook" </mark> into React features such as <strong>state and lifecycle methods.</strong> </li>
-
-    <div class="w3-panel w3-card w3-light-grey"> 
-
-  
-        <div class="w3-code htmlHigh notranslate">
-            import React, { useState } from "react";
-            import ReactDOM from "react-dom/client";
-            
-            function FavoriteColor() {
-              const [color, setColor] = useState("red");
-                
-              return (
-                &lt;&gt;
-                  &lt;h1&gt;My favorite color is {color}!&lt;/h1&gt;
-                  &lt;button
-                    type="button"
-                    onClick={() => setColor("blue")}
-                  >Blue</button>
-                  <button
-                    type="button"
-                    onClick={() => setColor("red")}
-                  >Red</button>
-                  <button
-                    type="button"
-                    onClick={() => setColor("pink")}
-                  >Pink</button>
-                  <button
-                    type="button"
-                    onClick={() => setColor("green")}
-                  >Green</button>
-                </>
-              );
-            }
-            
-            const root = ReactDOM.createRoot(document.getElementById('root'));
-            root.render(<FavoriteColor />);
-            
-    
-        </div>
-      </div>
-  
-
-    <li>You <strong>must import</strong> Hooks from react.</li>
-    <li>Here we are using the <strong>useState Hook to</strong> <mark>keep track of the application state.</mark>  </li>
-    <li><strong>State</strong> generally refers to <strong>application data or properties </strong>that  <mark>need to be tracked.</mark> </li>
-    <li>There are 3 rules for hooks: 
-        <ol>
-            <li>Hooks can only be <strong>called inside React function components.</strong> </li>
-            <li>Hooks can only be <strong>called at the top level of a component.</strong> </li>
-            <li>Hooks <strong>cannot be conditional</strong> </li>
-        </ol>
-    </li>
-    <li>Hooks <strong>will not work in React class components</strong> .</li>
-  
-</ol>
-<!-- ====16-React Hooks====end -->
-
-<hr class="red-line">
-<!-- ====16.1-React useState Hook<====start -->
-<h3>16.1-React useState Hook</h2>
-    <ol>
-        <li>The <mark>eact useState Hook</mark>R allows us to <mark> <strong>track state in a function component.</strong></mark> </li>
-        <li>State generally refers to <mark>data or properties</mark>  that need to be <strong>tracking in an application.</strong> </li>
-        <li>To use the useState Hook  we first  <mark>need to import it into our component</mark></li>
-
-
-        <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>At the top of your component, import the useState Hook.</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-              import { useState } from "react";
-          
-        
-            </div>
-          </div>
-      
-
-        <li>We  <strong>initialize our state</strong> by calling <mark>useState in our function component.</mark> </li>
-        <li>useState <strong>accepts an initial state</strong>  and <mark>returns two values:</mark> 
-            <ol>
-                <li>The current state</li>
-                <li>A <strong>function</strong> that <mark>updates the state</mark></li>
-            </ol>
-        </li>
-        <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4><strong>Initialize state </strong>at the <mark>top of the function component.</mark></h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                import { useState } from "react";<br><br>
-
-                function FavoriteColor() {<br>
-                  const [color, setColor] = useState("");<br>
-                }<br>
-        
-            </div>
-          </div>
-
-        <li>we are <strong>destructuring</strong> the <mark>returned values</mark>  from useState.</li>
-        <li>The first value, color, is our <strong>current state</strong></li>
-        <li>The second value, setColor, <strong>is the function </strong>that is used to<mark>update our state.</mark> </li>
-        <li><strong>These names</strong> <mark>are variables</mark> that can be <strong>named</strong> anything you would like.</li>
-        <li>we set the <strong>initial state </strong>to an <mark>empty string: useState("")</mark></li>
-
-      
-
-    </ol>
- <!-- ====16.1-React useState Hook<====end --> 
-
- <hr class="red-line">
-
-<h3>16.2-React useEffect Hooks</h2>
-    <ol>
-        <li>The <strong>useEffect</strong> Hook allows you to <mark>perform <strong>side effects</strong>  in your components.</mark> </li>
-        <li>Some examples of side effects are: FDT
-            <ol>
-                <li>Fetching data</li>
-                <li>Directly updating the DOM</li>
-                <li>Timers</li>
-            </ol>
-        </li>
-        <li>useEffect <strong>accepts two arguments.</strong></li>
-        <li>The second argument is<mark>optional.</mark> </li>
-        <li>useEffect(&lt;function&gt;, &lt;dependency&gt;)</li>
-        <li>Let's use a timer as an example.</li>
-
-        <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>Use <mark>setTimeout() </mark>to count 1 second after initial render:</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                import { useState, useEffect } from "react";<br>
-                import ReactDOM from "react-dom/client";<br><br>
-                
-                function Timer() {<br>
-                  const [count, setCount] = useState(0);<br><br>
-                
-                  useEffect(() => {<br>
-                    setTimeout(() => {<br>
-                      setCount((count) => count + 1);<br>
-                    }, 1000);<br>
-                  });<br><br>
-                
-                  return &lt;h1&gt;I've rendered {count} times!&lt;/h1&gt;;<br>
-                }<br><br>
-                
-                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-                root.render(&lt;Timer /&gt;);<br>
-        
-            </div>
-          </div>
-          <li>But wait!! It keeps counting even though it <u>should only count once!</u></li>
-          <li><mark>useEffect</mark> runs on every render.</li>
-          <li> That means that when the count changes, a render happens,</li>
-          <li>which then triggers another effect</li>
-          <li>This is not what we want.</li>
-          <li>There are several ways to control when side effects run.</li>
-          <li>We should always include the second parameter which accepts an array. </li>
-          <li>We can optionally pass dependencies to <mark>useEffect</mark> in this array.</li>
-
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>1. No dependency passed: </h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                useEffect(() => {<br>
-                    //Runs on every render<br>
-                  });<br>
-        
-            </div>
-          </div>
-
-
-
-
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>2. An empty array:</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                useEffect(() => {<br>
-                    //Runs only on the first render <br>
-                  }, []);<br>
-        
-            </div>
-          </div>
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>3. Props or state values:</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                useEffect(() => { <br>
-                    //Runs on the first render<br>
-                    //And any time any dependency value changes<br>
-                  }, [prop, state]);<br>
-        
-            </div>
-          </div>
-
-          So, to fix this issue, let's only run this effect on the initial render.
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>Only run the effect on the initial render:</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                import { useState, useEffect } from "react"; <br>
-                import ReactDOM from "react-dom/client"; <br><br>
-                
-                function Timer() { <br>
-                  const [count, setCount] = useState(0); <br><br>
-                
-                  useEffect(() => { <br>
-                    setTimeout(() => { <br>
-                      setCount((count) => count + 1); <br>
-                    }, 1000); <br>
-                  }, []); // &gt;- add empty brackets here <br><br>
-                
-                  return &lt;h1&gt;'ve rendered {count} times!&lt;/h1&gt;;<br>
-                }<br><br>
-                
-                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-                root.render(&lt;Timer /&gt;);<br>
-        
-            </div>
-          </div>
-
-
-
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>     Here is an example of a <mark>useEffect</mark> Hook that is dependent on a variable.</h4>
-            <h4>If the <mark>count</mark> variable updates, the effect will run again:</h4>
-
-            <div class="w3-code htmlHigh notranslate">
-                import { useState, useEffect } from "react"; <br>
-                import ReactDOM from "react-dom/client"; <br> <br>
-                
-                function Counter() { <br>
-                  const [count, setCount] = useState(0); <br>
-                  const [calculation, setCalculation] = useState(0); <br> <br>
-                
-                  useEffect(() => { <br>
-                    setCalculation(() => count * 2); <br>
-                  }, [count]); // &lt;- add the count variable here <br> <br>
-                
-                  return (
-                    &lt;&gt;
-                    &lt;p&gt;Count: {count}&lt;/p&gt; <br>
-                    &lt;button onClick={() => setCount((c) => c + 1)}>+&lt;/button&gt; <br>
-                    &lt;p&gt;Calculation: {calculation}&lt;/p&gt; <br>
-                    &lt;/&gt; <br> 
-                    );<br>
-                } <br> <br>
-                
-                const root = ReactDOM.createRoot(document.getElementById('root'));<br>
-                root.render(&lt;Counter /&gt;);<br>
-        
-            </div>
-          </div>
-         
-          If there are <u>multiple dependencies,</u>  they should be <strong>included in the useEffect dependency array.</strong>
-
-
-
-
-
-          
-
-
-
-
-
-
-    </ol>
-
-
-
-
-
-    <hr class="red-line">
-    <hr class="red-line">
-    <hr class="red-line">
-    <hr class="red-line">
-    <hr class="red-line">
-<h3>16.3-React <mark>useContext</mark> Hook</h2>
-
-    <li>React Context is a way to <strong>manage state globally.</strong></li>
-    <li>It can be used together <mark>with the useState</mark> Hook</li>
-    <li>to share state between  <u>nested components </u> more easily than with <strong>useState alone.</strong> </li> <br><br>
-    <li>The Problem:
-        <ol>
-            <li>State should be held by the highest parent component in the stack</li>
-            <li>that requires access to the state.</li>
-            <li>To illustrate, we have many nested components.</li>
-            <li>The component at the top and bottom of the stack need access to the state.</li>
-            <li>To do this without Context,</li>
-            <li>we will need to pass the state as "props" through each nested component. </li>
-            <li>This is called "prop drilling".
-
-
-                <div class="w3-panel w3-card w3-light-grey"> 
-
-                    <h4>Passing "props" through nested components:</h4>
-        
-                    <div class="w3-code htmlHigh notranslate">
-                        import { useState } from "react"; <br>
-                        import ReactDOM from "react-dom/client";<br><br>
-                        
-                        function Component1() {<br>
-                          const [user, setUser] = useState("Jesse Hall");<br><br>
-                        
-                          return (<br>
-                            &lt;&gt;<br>
-                              &lt;h1&gt;h1&gt;{`Hello ${user}!`}&lt;/h1&gt; <br>
-                              &lt;Component2 user={user} /&gt; <br>
-                              &lt;/&gt;<br>
-                          ); <br>
-                        } <br><br>
-                        
-                        function Component2({ user }) { <br>
-                          return ( <br>
-                          &lt;&gt;<br>
-                          &lt;h1&gt;Component 2&lt;/h1&gt; <br>
-                          &lt;Component3 user={user} /&gt;   <br>
-                              &lt;/&gt;  <br>
-                          ); <br>
-                        } <br><br>
-                        
-                        function Component3({ user }) {  <br>
-                          return ( <br>
-                          &lt;&gt; <br>
-                          &lt;h1&gt;Component 3&lt;/h1&gt;  <br>
-                          &lt;Component4 user={user} /&gt; <br>
-                              &lt;/&gt; <br>
-                          ); <br>
-                        } <br><br>
-                        
-                        function Component4({ user }) { <br>
-                          return ( <br>
-                          &lt;&gt; <br>
-                          &lt;h1&gt;Component 4&lt;/h1&gt; <br>
-                          &lt;Component5 user={user} /&gt; <br>
-                              &lt;/&gt; <br>
-                          ); <br>
-                        } <br>
-                        
-                        function Component5({ user }) { <br>
-                          return ( <br>
-                          &lt;&gt; <br>
-                          &lt;h1&gt;Component 5&lt;/h1&gt;
-                          &lt;h2&gt;{`Hello ${user} again!`}&lt;/h2&gt; <br>
-                              &lt;/&gt; <br>
-                          ); <br>
-                        } <br><br>
-                        
-                        const root = ReactDOM.createRoot(document.getElementById('root')); <br>
-                        root.render(&lt;Component1 /&gt;); <br>
-                   
-                    </div>
-                  </div>
-                 
-
-                   <ol>
-                    <li>Even though components 2-4 did not need the state</li>
-                    <li>they had to pass the state along so that it could reach component 5.</li>
-         
-                   </ol>
-
-
-
-
-
-
-
-            </li>
-          
-        </ol>
-    </li>
-    <li><strong>The Solution:</strong>
-
-
-      <ol>
-        <li>The solution is to create context.</li>
-        <li>To create context, you must Import createContext and initialize it:
-
-
-
-          <div class="w3-panel w3-card w3-light-grey"> 
-
-            <h4>      </h4>
- 
-
-            <div class="w3-code htmlHigh notranslate">
-              import { useState, createContext } from "react";<br>
-              import ReactDOM from "react-dom/client";<br><br>
-              
-              const UserContext = createContext()<br>
- 
-             
-            </div>
-          </div>
-
-
-
-
-        </li>
-        <li>Next we'll use the <strong>Context Provider</strong> to <mark>wrap the tree of components</mark> that need the state Context.</li>
-    
-      </ol>
-
-    </li>
-    <li><strong>Context Provider:</strong>
-
-
-      <ol>
-
-        <li>Wrap child components in the Context Provider</li>
-      
-      </ol>
-
-    </li>
-    <li></li>
-
-<ol>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ol>
-
-
-
-
-
-
-
-
-
-
-    <hr class="red-line">    <hr class="red-line">    <hr class="red-line">  
-<h3>16.4-React useRef Hook</h2>
-<h3>16.5-React useReducer Hook</h2>
-<h3>16.6-React useCallback Hook</h2>
-<h3>16.7-React useMemo Hook</h2>
-<h3>16.8-React Custom Hooks</h2>
-
-
-
-
-
-<script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
 
 <script>
-w3CodeColor();
+    function copyText(text, btnElement) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = "تم النسخ!";
+            btnElement.classList.add("copied");
+            
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.classList.remove("copied");
+            }, 1500);
+        }).catch(err => {
+            console.error('فشل النسخ: ', err);
+        });
+    }
 </script>
-
-
 
 </body>
 </html>
-
-
-
-
-
-    <hr class="red-line">
-
