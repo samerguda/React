@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spanish B2 - 300 Verbs</title>
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-dark: #0d47a1;
+      --accent: #d81b60;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #212529;
+      --text-muted: #6c757d;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .search-box {
+      margin-bottom: 24px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: #fff;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .spanish-verb {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      direction: ltr;
+    }
+
+    .number {
+      font-size: 0.8rem;
+      background: var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .arabic-meaning {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pronunciation {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+      
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Spanish B2 — 300 Verbs</h1>
+      <p>أهم أفعال اللغة الإسبانية للمستوى فوق المتوسط B2 مع الترجمة والنطق</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="بحث عن فعل باللغة الإسبانية أو العربية..." onkeyup="filterVerbs()">
+    </div>
+
+    <div class="grid" id="verbsGrid"></div>
+  </div>
+
+  <script>
+    const verbsData = [
+      { spanish: "abordar", arabic: "يتناول / يعالج", pronunciation: "أَبُورْدَار" },
+      { spanish: "sostener", arabic: "يدعم / يتمسك بـ", pronunciation: "سُوسْتِينِير" },
+      { spanish: "plantearse", arabic: "يفكر في / يطرح على نفسه", pronunciation: "بْلَانْتِيَارْسِيه" },
+      { spanish: "desempeñar", arabic: "يؤدي / شغل", pronunciation: "دِيسِيمْبِينْيَار" },
+      { spanish: "repercutir", arabic: "يؤثر / ينعكس", pronunciation: "رِيبِيرْكُوتِير" },
+      { spanish: "destacar", arabic: "يبرز / يؤكد على", pronunciation: "دِيسْتَاكَار" },
+      { spanish: "afrontar", arabic: "يواجه", pronunciation: "أَفْرُونْتَار" },
+      { spanish: "prescindir", arabic: "يستغني عن", pronunciation: "بْرِيسْسِينْدِير" },
+      { spanish: "fomentar", arabic: "يشجع / يعزز", pronunciation: "فُومِينْتَار" },
+      { spanish: "contemplar", arabic: "يأخذ بعين الاعتبار / يتأمل", pronunciation: "كُونْتِيمْبْلَار" },
+      { spanish: "aportar", arabic: "يساهم / يقدم", pronunciation: "أَبُورْتَار" },
+      { spanish: "cuestionar", arabic: "يشكك في / يتساءل عن", pronunciation: "كُوِيسْتِيُونَار" },
+      { spanish: "desarrollar", arabic: "يطور", pronunciation: "دِيسَارُويَار" },
+      { spanish: "implicar", arabic: "يتضمن / يستلزم", pronunciation: "إِمْبْلِيكَار" },
+      { spanish: "establecer", arabic: "يحدد / يؤسس", pronunciation: "إِسْتَابْلِيسِير" },
+      { spanish: "alcanzar", arabic: "يحقق / يصل إلى", pronunciation: "أَلْكَانْسَار" },
+      { spanish: "desempeñarse", arabic: "يؤدي عمله", pronunciation: "دِيسِيمْبِينْيَارْسِيه" },
+      { spanish: "gestionar", arabic: "يدير", pronunciation: "خِيسْتِيُونَار" },
+      { spanish: "supervisar", arabic: "يشرف على", pronunciation: "سُوبِيرْبِيسَار" },
+      { spanish: "coordinar", arabic: "ينسق", pronunciation: "كُوُورْدِينَار" },
+      { spanish: "delegar", arabic: "يفوض", pronunciation: "دِيلِيغَار" },
+      { spanish: "negociar", arabic: "يتفاوض", pronunciation: "نِيغُوسِيَار" },
+      { spanish: "resolver", arabic: "يحل", pronunciation: "رِيسُولْبِير" },
+      { spanish: "priorizar", arabic: "يعطي الأولوية", pronunciation: "بْرِيُورِيسَار" },
+      { spanish: "optimizar", arabic: "يحسن / يجعل أكثر كفاءة", pronunciation: "أُوبْتِيمِيسَار" },
+      { spanish: "implementar", arabic: "ينفذ / يطبق", pronunciation: "إِمْبْلِيمِينْتَار" },
+      { spanish: "evaluar", arabic: "يقيّم", pronunciation: "إِبَالُوَار" },
+      { spanish: "analizar", arabic: "يحلل", pronunciation: "أَنَالِيسَار" },
+      { spanish: "interpretar", arabic: "يفسر", pronunciation: "إِنْتِيرْبْرِيتَار" },
+      { spanish: "contrastar", arabic: "يقارن / يتحقق من", pronunciation: "كُونْتْرَاسْتَار" },
+      { spanish: "argumentar", arabic: "يقدم حججًا", pronunciation: "أَرْغُومِينْتَار" },
+      { spanish: "justificar", arabic: "يبرر", pronunciation: "خُوسْتِيفِيكَار" },
+      { spanish: "demostrar", arabic: "يثبت", pronunciation: "دِيمُوسْتْرَار" },
+      { spanish: "cuantificar", arabic: "يحدد كمّيًا", pronunciation: "كُوَانْتِيفِيكَار" },
+      { spanish: "identificar", arabic: "يحدد / يتعرف على", pronunciation: "إِيدِينْتِيفِيكَار" },
+      { spanish: "distinguir", arabic: "يميز", pronunciation: "دِيسْتِينْغِير" },
+      { spanish: "diferenciar", arabic: "يفرق", pronunciation: "دِيفِيرِينْسِيَار" },
+      { spanish: "relacionar", arabic: "يربط", pronunciation: "رِيلَاسِيُونَار" },
+      { spanish: "deducir", arabic: "يستنتج", pronunciation: "دِيدُوسِير" },
+      { spanish: "concluir", arabic: "يستنتج / يختتم", pronunciation: "كُونْكْلُوِير" },
+      { spanish: "suponer", arabic: "يفترض", pronunciation: "سُوبُونِير" },
+      { spanish: "presumir", arabic: "يفترض / يتباهى", pronunciation: "بْرِيسُومِير" },
+      { spanish: "inferir", arabic: "يستنتج", pronunciation: "إِنْفِيرِير" },
+      { spanish: "predecir", arabic: "يتنبأ", pronunciation: "بْرِيدِيسِير" },
+      { spanish: "anticipar", arabic: "يتوقع مسبقًا", pronunciation: "أَنْتِيسِيبَار" },
+      { spanish: "prever", arabic: "يتوقع", pronunciation: "بْرِيبِير" },
+      { spanish: "estimar", arabic: "يقدّر", pronunciation: "إِسْتِيمَار" },
+      { spanish: "calcular", arabic: "يحسب / يقدّر", pronunciation: "كَلْكُولَار" },
+      { spanish: "valorar", arabic: "يقيّم / يقدّر", pronunciation: "بَالُورَار" },
+      { spanish: "considerar", arabic: "يعتبر", pronunciation: "كُونْسِيدِيرَار" },
+      { spanish: "sugerir", arabic: "يقترح", pronunciation: "سُوخِير" },
+      { spanish: "proponer", arabic: "يقترح", pronunciation: "بْرُوبُونِير" },
+      { spanish: "recomendar", arabic: "يوصي", pronunciation: "رِيكُومِينْدَار" },
+      { spanish: "plantear", arabic: "يطرح", pronunciation: "بْلَانْتِيَار" },
+      { spanish: "advertir", arabic: "يحذر", pronunciation: "أَدْبِيرْتِير" },
+      { spanish: "señalar", arabic: "يشير إلى", pronunciation: "سِينْيَالَار" },
+      { spanish: "afirmar", arabic: "يؤكد", pronunciation: "أَفِيرْمَار" },
+      { spanish: "negar", arabic: "ينكر", pronunciation: "نِيغَار" },
+      { spanish: "reivindicar", arabic: "يطالب بـ / يؤكد حقه", pronunciation: "رِيبِينْدِيكَار" },
+      { spanish: "defender", arabic: "يدافع عن", pronunciation: "دِيفِينْدِير" },
+      { spanish: "criticar", arabic: "ينتقد", pronunciation: "كْرِيتِيكَار" },
+      { spanish: "cuestionarse", arabic: "يتساءل / يشك", pronunciation: "كُوِيسْتِيُونَارْسِيه" },
+      { spanish: "convencer", arabic: "يقنع", pronunciation: "كُونْبِينْسِير" },
+      { spanish: "persuadir", arabic: "يقنع", pronunciation: "بِيرْسُوَادِير" },
+      { spanish: "influir", arabic: "يؤثر", pronunciation: "إِنْفْلُوِير" },
+      { spanish: "condicionar", arabic: "يؤثر / يقيّد", pronunciation: "كُونْدِيسِيُونَار" },
+      { spanish: "presionar", arabic: "يضغط", pronunciation: "بْرِيسِيُونَار" },
+      { spanish: "reaccionar", arabic: "يتفاعل", pronunciation: "رِيكْسِيُونَار" },
+      { spanish: "resistir", arabic: "يقاوم", pronunciation: "رِيسِيسْتِير" },
+      { spanish: "oponerse", arabic: "يعارض", pronunciation: "أُوبُونِيرْسِيه" },
+      { spanish: "adaptar", arabic: "يكيّف", pronunciation: "أَدَابْتَار" },
+      { spanish: "ajustar", arabic: "يضبط / يعدل", pronunciation: "أَخُوسْتَار" },
+      { spanish: "modificar", arabic: "يعدل", pronunciation: "مُودِيفِيكَار" },
+      { spanish: "transformar", arabic: "يحول", pronunciation: "تْرَانْسْفُورْمَار" },
+      { spanish: "alterar", arabic: "يغير / يعبث بـ", pronunciation: "أَلْتِيرَار" },
+      { spanish: "sustituir", arabic: "يستبدل", pronunciation: "سُوسْتِيتُوِير" },
+      { spanish: "reemplazar", arabic: "يستبدل", pronunciation: "رِييِمْبْلَاسَار" },
+      { spanish: "incorporar", arabic: "يدمج / يضيف", pronunciation: "إِنْكُورْبُورَار" },
+      { spanish: "integrar", arabic: "يدمج", pronunciation: "إِنْتِيغْرَار" },
+      { spanish: "combinar", arabic: "يجمع / يخلط", pronunciation: "كُومْبِينَار" },
+      { spanish: "elaborar", arabic: "يعد / يطوّر", pronunciation: "إِلَابُورَار" },
+      { spanish: "diseñar", arabic: "يصمم", pronunciation: "دِيسِينْيَار" },
+      { spanish: "crear", arabic: "ينشئ", pronunciation: "كْرِيَار" },
+      { spanish: "generar", arabic: "يولد / ينتج", pronunciation: "خِينِيرَار" },
+      { spanish: "producir", arabic: "ينتج", pronunciation: "بْرُودُوسِير" },
+      { spanish: "fabricar", arabic: "يصنع", pronunciation: "فَابْرِيكَار" },
+      { spanish: "desarrollarse", arabic: "يتطور", pronunciation: "دِيسَارُويَارْسِيه" },
+      { spanish: "evolucionar", arabic: "يتطور", pronunciation: "إِبُولُوسِيُونَار" },
+      { spanish: "progresar", arabic: "يتقدم", pronunciation: "بْرُوغْرِيسَار" },
+      { spanish: "avanzar", arabic: "يتقدم", pronunciation: "أَبَانْسَار" },
+      { spanish: "fracasar", arabic: "يفشل", pronunciation: "فْرَاكَاسَار" },
+      { spanish: "triunfar", arabic: "ينجح / ينتصر", pronunciation: "تْرِيُونْفَار" },
+      { spanish: "lograr", arabic: "يحقق", pronunciation: "لُوغْرَار" },
+      { spanish: "superar", arabic: "يتغلب على", pronunciation: "سُوبِيرَار" },
+      { spanish: "conquistar", arabic: "يغزو / يحقق", pronunciation: "كُونْكِيسْتَار" },
+      { spanish: "consolidar", arabic: "يعزز / يرسخ", pronunciation: "كُونْسُولِيدَار" },
+      { spanish: "mantener", arabic: "يحافظ على", pronunciation: "مَانْتِينِير" },
+      { spanish: "preservar", arabic: "يحافظ على", pronunciation: "بْرِيسِيرْبَار" },
+      { spanish: "conservar", arabic: "يحافظ على", pronunciation: "كُونْسِيرْبَار" },
+      { spanish: "garantizar", arabic: "يضمن", pronunciation: "غَارَانْتِيسَار" },
+      { spanish: "asegurar", arabic: "يضمن / يؤكد", pronunciation: "أَسِغُورَار" },
+      { spanish: "proporcionar", arabic: "يوفر", pronunciation: "بْرُوبُورْسِيُونَار" },
+      { spanish: "suministrar", arabic: "يزوّد", pronunciation: "سُومِينِيسْتْرَار" },
+      { spanish: "facilitar", arabic: "يسهل / يوفر", pronunciation: "فَاسِيلِيتَار" },
+      { spanish: "favorecer", arabic: "يعزز / يفضل", pronunciation: "فَابُورِيسِير" },
+      { spanish: "fomentar", arabic: "يشجع", pronunciation: "فُومِينْتَار" },
+      { spanish: "promover", arabic: "يروّج / يعزز", pronunciation: "بْرُومُوبِير" },
+      { spanish: "impulsar", arabic: "يدفع / يحفز", pronunciation: "إِمْبُولْسَار" },
+      { spanish: "estimular", arabic: "يحفز", pronunciation: "إِسْتِيمُولَار" },
+      { spanish: "motivar", arabic: "يحفز", pronunciation: "مُوتِيبَار" },
+      { spanish: "obstaculizar", arabic: "يعرقل", pronunciation: "أُوبْسْتَاكُولِيسَار" },
+      { spanish: "dificultar", arabic: "يصعّب", pronunciation: "دِيفِيكُولْتَار" },
+      { spanish: "impedir", arabic: "يمنع", pronunciation: "إِمْبِيدِير" },
+      { spanish: "evitar", arabic: "يتجنب", pronunciation: "إِبِيتَار" },
+      { spanish: "prevenir", arabic: "يمنع / يقي", pronunciation: "بْرِيبِينِير" },
+      { spanish: "limitar", arabic: "يحد", pronunciation: "لِيمِيتَار" },
+      { spanish: "restringir", arabic: "يقيد", pronunciation: "رِيسْتْرِينْخِير" },
+      { spanish: "prohibir", arabic: "يمنع", pronunciation: "بْرُوأِبِير" },
+      { spanish: "excluir", arabic: "يستبعد", pronunciation: "إِكْسْكْلُوِير" },
+      { spanish: "descartar", arabic: "يستبعد / يتخلص من", pronunciation: "دِيسْكَارْتَار" },
+      { spanish: "prescindir", arabic: "يستغني عن", pronunciation: "بْرِيسْسِينْدِير" },
+      { spanish: "reducir", arabic: "يقلل", pronunciation: "رِيدُوسِير" },
+      { spanish: "disminuir", arabic: "ينخفض / يقلل", pronunciation: "دِيسْمِينُوِير" },
+      { spanish: "incrementar", arabic: "يزيد", pronunciation: "إِنْكْرِيمِينْتَار" },
+      { spanish: "aumentar", arabic: "يزيد", pronunciation: "أَوْمِينْتَار" },
+      { spanish: "multiplicar", arabic: "يضاعف", pronunciation: "مُولْتِيبْلِيكَار" },
+      { spanish: "duplicar", arabic: "يضاعف", pronunciation: "دُوبْلِيكَار" },
+      { spanish: "triplicar", arabic: "يضاعف ثلاث مرات", pronunciation: "تْرِيبْلِيكَار" },
+      { spanish: "expandir", arabic: "يوسع", pronunciation: "إِكْسْبَانْدِير" },
+      { spanish: "extender", arabic: "يمدد / يوسع", pronunciation: "إِكْسْتِينْدِير" },
+      { spanish: "abarcar", arabic: "يشمل", pronunciation: "أَبَارْكَار" },
+      { spanish: "comprender", arabic: "يشمل / يفهم", pronunciation: "كُومْبْرِينْدِير" },
+      { spanish: "contener", arabic: "يحتوي", pronunciation: "كُونْتِينِير" },
+      { spanish: "constituir", arabic: "يشكل", pronunciation: "كُونْسْتِيتُوِير" },
+      { spanish: "consistir", arabic: "يتكون من", pronunciation: "كُونْسِيسْتِير" },
+      { spanish: "equivaler", arabic: "يعادل", pronunciation: "إِكِيبَالِير" },
+      { spanish: "corresponder", arabic: "يتوافق / يطابق", pronunciation: "كُورِيسْبُونْدِير" },
+      { spanish: "pertenecer", arabic: "ينتمي", pronunciation: "بِيرْتِينِيسِير" },
+      { spanish: "depender", arabic: "يعتمد", pronunciation: "دِيبِينْدِير" },
+      { spanish: "carecer", arabic: "يفتقر إلى", pronunciation: "كَارِيسِير" },
+      { spanish: "disponer", arabic: "يتوفر لديه / يرتب", pronunciation: "دِيسْبُونِير" },
+      { spanish: "destinar", arabic: "يخصص", pronunciation: "دِيسْتِينَار" },
+      { spanish: "asignar", arabic: "يخصص / يعين", pronunciation: "أَسِغْنَار" },
+      { spanish: "distribuir", arabic: "يوزع", pronunciation: "دِيسْتْرِيبُوِير" },
+      { spanish: "repartir", arabic: "يوزع", pronunciation: "رِيبَارْتِير" },
+      { spanish: "administrar", arabic: "يدير", pronunciation: "أَدْمِينِيسْتْرَار" },
+      { spanish: "gestionar", arabic: "يدير", pronunciation: "خِيسْتِيُونَار" },
+      { spanish: "financiar", arabic: "يمول", pronunciation: "فِينَانْسِيَار" },
+      { spanish: "invertir", arabic: "يستثمر", pronunciation: "إِنْبِيرْتِير" },
+      { spanish: "recaudar", arabic: "يجمع الأموال", pronunciation: "رِيكَاوْدَار" },
+      { spanish: "cotizar", arabic: "يساهم / يسعّر", pronunciation: "كُوتِيسَار" },
+      { spanish: "facturar", arabic: "يفوتر / يصدر فاتورة", pronunciation: "فَاكْتُورَار" },
+      { spanish: "endeudarse", arabic: "يستدين", pronunciation: "إِنْدِوْدَارْسِيه" },
+      { spanish: "ahorrar", arabic: "يدخر", pronunciation: "أَؤُرَار" },
+      { spanish: "desembolsar", arabic: "يدفع / يصرف", pronunciation: "دِيسِيمْبُولْسَار" },
+      { spanish: "reembolsar", arabic: "يعوض ماليًا", pronunciation: "رِييِمْبُولْسَار" },
+      { spanish: "financiarse", arabic: "يمول نفسه", pronunciation: "فِينَانْسِيَارْسِيه" },
+      { spanish: "rentabilizar", arabic: "يجعل مربحًا", pronunciation: "رِِينْتَابِيلِيسَار" },
+      { spanish: "contratar", arabic: "يوظف / يتعاقد", pronunciation: "كُونْتْرَاتَار" },
+      { spanish: "despedir", arabic: "يفصل من العمل / يودع", pronunciation: "دِيسْبِيدِير" },
+      { spanish: "ascender", arabic: "يترقى", pronunciation: "أَسِينْدِير" },
+      { spanish: "jubilarse", arabic: "يتقاعد", pronunciation: "خُوبِيلَارْسِيه" },
+      { spanish: "renunciar", arabic: "يستقيل / يتنازل", pronunciation: "رِينُونْسِيَار" },
+      { spanish: "reclamar", arabic: "يطالب / يشتكي", pronunciation: "رِيكْلَامَار" },
+      { spanish: "solicitar", arabic: "يطلب رسميًا", pronunciation: "سُولِيسِيتَار" },
+      { spanish: "presentar", arabic: "يقدم", pronunciation: "بْرِيسِينْتَار" },
+      { spanish: "tramitar", arabic: "يعالج إجراءً رسميًا", pronunciation: "تْرَامِيتَار" },
+      { spanish: "cumplimentar", arabic: "يملأ / يستكمل إجراء", pronunciation: "كُمْبْلِيمِينْتَار" },
+      { spanish: "formalizar", arabic: "يضفي طابعًا رسميًا", pronunciation: "فُورْمَالِيسَار" },
+      { spanish: "renovar", arabic: "يجدد", pronunciation: "رِينُوبَار" },
+      { spanish: "prorrogar", arabic: "يمدد", pronunciation: "بْرُورُوغَار" },
+      { spanish: "cancelar", arabic: "يلغي", pronunciation: "كَانْسِلَار" },
+      { spanish: "confirmar", arabic: "يؤكد", pronunciation: "كُونْفِيرْمَار" },
+      { spanish: "verificar", arabic: "يتحقق", pronunciation: "بِيرِيفِيكَار" },
+      { spanish: "comprobar", arabic: "يتحقق", pronunciation: "كُومْبْرُوبَار" },
+      { spanish: "certificar", arabic: "يشهد / يعتمد", pronunciation: "سِيرْتِيفِيكَار" },
+      { spanish: "legalizar", arabic: "يضفي الشرعية / يوثق", pronunciation: "لِيغَالِيسَار" },
+      { spanish: "autorizar", arabic: "يسمح رسميًا", pronunciation: "أَوْتُورِيسَار" },
+      { spanish: "solucionar", arabic: "يحل", pronunciation: "سُولُوسِيُونَار" },
+      { spanish: "enfrentarse", arabic: "يواجه", pronunciation: "إِنْفْرِينْتَارْسِيه" },
+      { spanish: "combatir", arabic: "يكافح", pronunciation: "كُومْبَاتِير" },
+      { spanish: "luchar", arabic: "يكافح", pronunciation: "لُوتْشَار" },
+      { spanish: "reparar", arabic: "يصلح", pronunciation: "رِيبَارَار" },
+      { spanish: "corregir", arabic: "يصحح", pronunciation: "كُورِخِير" },
+      { spanish: "reconocer", arabic: "يعترف / يتعرف", pronunciation: "رِيكُونُوسِير" },
+      { spanish: "admitir", arabic: "يعترف / يقبل", pronunciation: "أَدْمِيتِير" },
+      { spanish: "confesar", arabic: "يعترف", pronunciation: "كُونْفِيسَار" },
+      { spanish: "revelar", arabic: "يكشف", pronunciation: "رِيبِلَار" },
+      { spanish: "ocultar", arabic: "يخفي", pronunciation: "أُوكُلْتَار" },
+      { spanish: "disimular", arabic: "يخفي / يتظاهر", pronunciation: "دِيسِيمُولَار" },
+      { spanish: "sospechar", arabic: "يشك", pronunciation: "سُوسْبِيتْشَار" },
+      { spanish: "acusar", arabic: "يتهم", pronunciation: "أَكُوسَار" },
+      { spanish: "denunciar", arabic: "يبلغ / يدين", pronunciation: "دِينُونْسِيَار" },
+      { spanish: "investigar", arabic: "يحقق / يبحث", pronunciation: "إِنْبِيسْتِيغَار" },
+      { spanish: "examinar", arabic: "يفحص", pronunciation: "إِكْسَامِينَار" },
+      { spanish: "observar", arabic: "يلاحظ", pronunciation: "أُوبْسِيرْبَار" },
+      { spanish: "detectar", arabic: "يكتشف", pronunciation: "دِيتِيكْتَار" },
+      { spanish: "localizar", arabic: "يحدد موقع", pronunciation: "لُوكَالِيسَار" },
+      { spanish: "averiguar", arabic: "يستقصي / يكتشف", pronunciation: "أَبِيرِغُوَار" },
+      { spanish: "descubrir", arabic: "يكتشف", pronunciation: "دِيسْكُوبْرِير" },
+      { spanish: "indagar", arabic: "يستفسر / يبحث", pronunciation: "إِنْدَاغَار" },
+      { spanish: "consultar", arabic: "يستشير / يراجع", pronunciation: "كُونْسُولْتَار" },
+      { spanish: "consultarse", arabic: "يستشير", pronunciation: "كُونْسُولْتَارْسِيه" },
+      { spanish: "recopilar", arabic: "يجمع معلومات", pronunciation: "رِيكُوبِيلَار" },
+      { spanish: "recoger", arabic: "يجمع", pronunciation: "رِيكُوخِير" },
+      { spanish: "registrar", arabic: "يسجل", pronunciation: "رِخِيسْتْرَار" },
+      { spanish: "documentar", arabic: "يوثق", pronunciation: "دُوكُومِينْتَار" },
+      { spanish: "clasificar", arabic: "يصنف", pronunciation: "كْلَاسِيفِيكَار" },
+      { spanish: "ordenar", arabic: "يرتب", pronunciation: "أُورْدِينَار" },
+      { spanish: "organizar", arabic: "ينظم", pronunciation: "أُورْغَانِيسَار" },
+      { spanish: "archivar", arabic: "يؤرشف", pronunciation: "أَرْتْشِيبَار" },
+      { spanish: "almacenar", arabic: "يخزن", pronunciation: "أَلْمَاسِينِير" },
+      { spanish: "comunicar", arabic: "يبلغ / يتواصل", pronunciation: "كُومُونِيكَار" },
+      { spanish: "transmitir", arabic: "ينقل / يبث", pronunciation: "تْرَانْسْمِيتِير" },
+      { spanish: "difundir", arabic: "ينشر", pronunciation: "دِيفُونْدِير" },
+      { spanish: "publicar", arabic: "ينشر", pronunciation: "بُوبْلِيكَار" },
+      { spanish: "anunciar", arabic: "يعلن", pronunciation: "أَنُونْسِيَار" },
+      { spanish: "informar", arabic: "يبلغ", pronunciation: "إِنْفُورْمَار" },
+      { spanish: "notificar", arabic: "يخطر رسميًا", pronunciation: "نُوتِيفِيكَار" },
+      { spanish: "expresar", arabic: "يعبر", pronunciation: "إِسْبْرِيسَار" },
+      { spanish: "manifestar", arabic: "يعبّر / يصرح", pronunciation: "مَانِيفِيسْتَار" },
+      { spanish: "comentar", arabic: "يعلق", pronunciation: "كُومِينْتَار" },
+      { spanish: "mencionar", arabic: "يذكر", pronunciation: "مِينْسِيُونَار" },
+      { spanish: "describir", arabic: "يصف", pronunciation: "دِيسْكْرِيبِير" },
+      { spanish: "resumir", arabic: "يلخص", pronunciation: "رِيسُومِير" },
+      { spanish: "debatir", arabic: "يناقش", pronunciation: "دِيبَاتِير" },
+      { spanish: "discutir", arabic: "يناقش / يجادل", pronunciation: "دِيسْكُوتِير" },
+      { spanish: "aclarar", arabic: "يوضح", pronunciation: "أَكْلَارَار" },
+      { spanish: "precisar", arabic: "يحدد / يوضح", pronunciation: "بْرِيسِيسَار" },
+      { spanish: "matizar", arabic: "يوضح الفروق الدقيقة", pronunciation: "مَاتِيسَار" },
+      { spanish: "contradecir", arabic: "يناقض", pronunciation: "كُونْتْرَادِيسِير" },
+      { spanish: "coincidir", arabic: "يتفق / يتطابق", pronunciation: "كُوِينْسِيدِير" },
+      { spanish: "discrepar", arabic: "يختلف في الرأي", pronunciation: "دِيسْكْرِيبَار" },
+      { spanish: "opinar", arabic: "يبدي رأيًا", pronunciation: "أُوبِينَار" },
+      { spanish: "convivir", arabic: "يتعايش", pronunciation: "كُونْبِيبِير" },
+      { spanish: "cooperar", arabic: "يتعاون", pronunciation: "كُوُوبِيرَار" },
+      { spanish: "colaborar", arabic: "يتعاون", pronunciation: "كُولَابُورَار" },
+      { spanish: "participar", arabic: "يشارك", pronunciation: "بَارْتِيسِيبَار" },
+      { spanish: "involucrarse", arabic: "ينخرط / يشارك", pronunciation: "إِنْبُولُوكْرَارْسِيه" },
+      { spanish: "comprometerse", arabic: "يلتزم", pronunciation: "كُومْبْرُومِيتِيرْسِيه" },
+      { spanish: "responsabilizarse", arabic: "يتحمل المسؤولية", pronunciation: "رِيسْبُونْسَابِيلِيسَارْسِيه" },
+      { spanish: "relacionarse", arabic: "يتعامل / يرتبط", pronunciation: "رِيلَاسِيُونَارْسِيه" },
+      { spanish: "integrarse", arabic: "يندمج", pronunciation: "إِنْتِيغْرَارْسِيه" },
+      { spanish: "adaptarse", arabic: "يتكيف", pronunciation: "أَدَابْتَارْسِيه" },
+      { spanish: "acostumbrarse", arabic: "يعتاد", pronunciation: "أَكُوسْتُمْبْرَارْسِيه" },
+      { spanish: "comportarse", arabic: "يتصرف", pronunciation: "كُومْبُورْتَارْسِيه" },
+      { spanish: "reaccionar", arabic: "يتفاعل", pronunciation: "رِيكْسِيُونَار" },
+      { spanish: "quejarse", arabic: "يشتكي", pronunciation: "كِيخَارْسِيه" },
+      { spanish: "arrepentirse", arabic: "يندم", pronunciation: "أَرِّيبِينْتِيرْسِيه" },
+      { spanish: "atreverse", arabic: "يجرؤ", pronunciation: "أَتْرِيبِيرْسِيه" },
+      { spanish: "esforzarse", arabic: "يبذل جهدًا", pronunciation: "إِسْفُورْسَارْسِيه" },
+      { spanish: "acordarse", arabic: "يتذكر", pronunciation: "أَكُورْدَارْسِيه" },
+      { spanish: "darse cuenta", arabic: "يدرك", pronunciation: "دَارْسِيه كُوِينْتَا" },
+      { spanish: "enterarse", arabic: "يعلم / يعرف", pronunciation: "إِنْتِيرَارْسِيه" },
+      { spanish: "convencerse", arabic: "يقتنع", pronunciation: "كُونْبِينْسِيرْسِيه" },
+      { spanish: "preocuparse", arabic: "يقلق", pronunciation: "بْرِيُوكُوبَارْسِيه" },
+      { spanish: "acercarse", arabic: "يقترب", pronunciation: "أَسِيرْكَارْسِيه" },
+      { spanish: "alejarse", arabic: "يبتعد", pronunciation: "أَلِخَارْسِيه" },
+      { spanish: "desplazarse", arabic: "ينتق / يتحرك", pronunciation: "دِيسْبْلَاسَارْسِيه" },
+      { spanish: "desplazar", arabic: "ينقل / يزيح", pronunciation: "دِيسْبْلَاسَار" },
+      { spanish: "trasladar", arabic: "ينقل", pronunciation: "تْرَاسْلَادَار" },
+      { spanish: "transportar", arabic: "ينقل", pronunciation: "تْرَانْسْبُورْتَار" },
+      { spanish: "recorrer", arabic: "يجوب / يقطع", pronunciation: "رِيكُورِير" },
+      { spanish: "atravesar", arabic: "يعبر", pronunciation: "أَتْرَابِيسَار" },
+      { spanish: "cruzar", arabic: "يعبر", pronunciation: "كْرُوسَار" },
+      { spanish: "rodear", arabic: "يحيط بـ", pronunciation: "رُودِيَار" },
+      { spanish: "dirigirse", arabic: "يتجه", pronunciation: "دِيرِخِيرْسِيه" },
+      { spanish: "acceder", arabic: "يدخل / يصل إلى", pronunciation: "أَكْسِيدِير" },
+      { spanish: "salir adelante", arabic: "يتغلب على الصعوبات", pronunciation: "سَالِير أَدِلَانْتِيه" },
+      { spanish: "ejercer", arabic: "يمارس", pronunciation: "إِخِيرْسِير" },
+      { spanish: "especializarse", arabic: "يتخصص", pronunciation: "إِسْبِيسِيَالِيسَارْسِيه" },
+      { spanish: "capacitar", arabic: "يدرب / يؤهل", pronunciation: "كَابَاسِيتَار" },
+      { spanish: "formar", arabic: "يدرب / يشكل", pronunciation: "فُورْمَار" }
+    ];
+
+    function renderVerbs(verbs) {
+      const grid = document.getElementById('verbsGrid');
+      grid.innerHTML = '';
+      
+      verbs.forEach((verb, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="spanish-verb">${verb.spanish}</span>
+            <span class="number">#${index + 1}</span>
+          </div>
+          <div class="card-body">
+            <div class="arabic-meaning">${verb.arabic}</div>
+            ${verb.pronunciation ? `<div class="pronunciation">النطق: ${verb.pronunciation}</div>` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterVerbs() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = verbsData.filter(item => 
+        item.spanish.toLowerCase().includes(query) ||
+        item.arabic.includes(query) ||
+        (item.pronunciation && item.pronunciation.includes(query))
+      );
+      renderVerbs(filtered);
+    }
+
+    // Initial render
+    renderVerbs(verbsData);
+  </script>
+</body>
+</html>
