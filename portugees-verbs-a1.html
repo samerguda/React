@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Português de Portugal — A1</title>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --accent: #c62828;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #212529;
+      --text-muted: #6c757d;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .search-box {
+      margin-bottom: 24px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: #fff;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .portuguese-verb {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      direction: ltr;
+    }
+
+    .number {
+      font-size: 0.8rem;
+      background: var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .arabic-meaning {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pronunciation {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+      
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🇵🇹 Português de Portugal — A1</h1>
+      <p>أهم أفعال اللغة البرتغالية الأوروبية للمستوى المبتدئ A1 مع الترجمة والنطق</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="بحث عن فعل باللغة البرتغالية أو العربية..." onkeyup="filterVerbs()">
+    </div>
+
+    <div class="grid" id="verbsGrid"></div>
+  </div>
+
+  <script>
+    const verbsData = [
+      { portuguese: "ser", arabic: "يكون", pronunciation: "سِير" },
+      { portuguese: "estar", arabic: "يكون / يوجد", pronunciation: "إِشْتار" },
+      { portuguese: "ter", arabic: "يملك / لديه", pronunciation: "تِير" },
+      { portuguese: "fazer", arabic: "يفعل / يصنع", pronunciation: "فَزِير" },
+      { portuguese: "ir", arabic: "يذهب", pronunciation: "إِير" },
+      { portuguese: "vir", arabic: "يأتي", pronunciation: "فِير" },
+      { portuguese: "ver", arabic: "يرى", pronunciation: "فِير" },
+      { portuguese: "dar", arabic: "يعطي", pronunciation: "دَار" },
+      { portuguese: "dizer", arabic: "يقول", pronunciation: "دِزِير" },
+      { portuguese: "saber", arabic: "يعرف", pronunciation: "سَابِير" },
+      { portuguese: "falar", arabic: "يتكلم", pronunciation: "فَلَار" },
+      { portuguese: "comer", arabic: "يأكل", pronunciation: "كُومِير" },
+      { portuguese: "beber", arabic: "يشرب", pronunciation: "بِيبِير" },
+      { portuguese: "dormir", arabic: "ينام", pronunciation: "دُورْمِير" },
+      { portuguese: "acordar", arabic: "يستيقظ", pronunciation: "أَكُورْدَار" },
+      { portuguese: "morar", arabic: "يسكن", pronunciation: "مُورَار" },
+      { portuguese: "viver", arabic: "يعيش", pronunciation: "فِيفِير" },
+      { portuguese: "trabalhar", arabic: "يعمل", pronunciation: "تْغَبَالْيَار" },
+      { portuguese: "estudar", arabic: "يدرس", pronunciation: "إِشْتُودَار" },
+      { portuguese: "aprender", arabic: "يتعلم", pronunciation: "أَبْغَنْدِير" },
+      { portuguese: "ler", arabic: "يقرأ", pronunciation: "لِير" },
+      { portuguese: "escrever", arabic: "يكتب", pronunciation: "إِشْكْغِيفِير" },
+      { portuguese: "ouvir", arabic: "يسمع", pronunciation: "أُوفِير" },
+      { portuguese: "escutar", arabic: "يستمع", pronunciation: "إِشْكُوتَار" },
+      { portuguese: "gostar", arabic: "يحب / يعجبه", pronunciation: "غُوشْتَار" },
+      { portuguese: "querer", arabic: "يريد", pronunciation: "كِيرِير" },
+      { portuguese: "precisar", arabic: "يحتاج", pronunciation: "بْغِيسَار" },
+      { portuguese: "poder", arabic: "يستطيع", pronunciation: "بُودِير" },
+      { portuguese: "dever", arabic: "يجب / ينبغي", pronunciation: "دِيفِير" },
+      { portuguese: "preferir", arabic: "يفضل", pronunciation: "بْغِيفِير" },
+      { portuguese: "comprar", arabic: "يشتري", pronunciation: "كُومْبْغَار" },
+      { portuguese: "pagar", arabic: "يدفع", pronunciation: "بَغَار" },
+      { portuguese: "vender", arabic: "يبيع", pronunciation: "فِينْدِير" },
+      { portuguese: "custar", arabic: "يكلف", pronunciation: "كُوشْتَار" },
+      { portuguese: "usar", arabic: "يستخدم", pronunciation: "أُوزَار" },
+      { portuguese: "abrir", arabic: "يفتح", pronunciation: "أَبْغِير" },
+      { portuguese: "fechar", arabic: "يغلق", pronunciation: "فِيشَار" },
+      { portuguese: "entrar", arabic: "يدخل", pronunciation: "إِنْتْغَار" },
+      { portuguese: "sair", arabic: "يخرج", pronunciation: "سَايْر" },
+      { portuguese: "chegar", arabic: "يصل", pronunciation: "شِغَار" },
+      { portuguese: "partir", arabic: "يغادر", pronunciation: "بَارْتِير" },
+      { portuguese: "voltar", arabic: "يعود", pronunciation: "فُولْتَار" },
+      { portuguese: "ficar", arabic: "يبقى", pronunciation: "فِيكَار" },
+      { portuguese: "andar", arabic: "يمشي", pronunciation: "أَنْدَار" },
+      { portuguese: "correr", arabic: "يجري", pronunciation: "كُورِير" },
+      { portuguese: "conduzir", arabic: "يقود", pronunciation: "كُونْدُزِير" },
+      { portuguese: "viajar", arabic: "يسافر", pronunciation: "فِيَاجَار" },
+      { portuguese: "esperar", arabic: "انتظر / يأمل", pronunciation: "إِشْبِيرَار" },
+      { portuguese: "procurar", arabic: "يبحث عن", pronunciation: "بْغُوكُورَار" },
+      { portuguese: "encontrar", arabic: "يجد", pronunciation: "إِنْكُونْتْغَار" },
+      { portuguese: "chamar", arabic: "ينادي / يسمى", pronunciation: "شَمَار" },
+      { portuguese: "perguntar", arabic: "يسأل", pronunciation: "بِرْغُونْتَار" },
+      { portuguese: "responder", arabic: "يجيب", pronunciation: "غِيشْبُونْدِير" },
+      { portuguese: "ajudar", arabic: "يساعد", pronunciation: "أَجُودَار" },
+      { portuguese: "conhecer", arabic: "يعرف / يتعرف على", pronunciation: "كُونْيِسِير" },
+      { portuguese: "conversar", arabic: "يتحدث", pronunciation: "كُونْفِيرْسَار" },
+      { portuguese: "explicar", arabic: "يشرح", pronunciation: "إِشْبْلِيكَار" },
+      { portuguese: "mostrar", arabic: "يُري / يعرض", pronunciation: "مُوشْتْغَار" },
+      { portuguese: "levar", arabic: "يأخذ / يحمل", pronunciation: "لِفَار" },
+      { portuguese: "trazer", arabic: "يجلب", pronunciation: "تْغَازِير" },
+      { portuguese: "lavar", arabic: "يغسل", pronunciation: "لَفَار" },
+      { portuguese: "limpar", arabic: "ينظف", pronunciation: "لِمْبَار" },
+      { portuguese: "cozinhar", arabic: "يطبخ", pronunciation: "كُوزِينْيَار" },
+      { portuguese: "tomar", arabic: "يأخذ / يتناول", pronunciation: "تُومَار" },
+      { portuguese: "beijar", arabic: "يقبّل", pronunciation: "بَيْجَار" },
+      { portuguese: "começar", arabic: "يبدأ", pronunciation: "كُومِيسَار" },
+      { portuguese: "acabar", arabic: "ينتهي", pronunciation: "أَكَبَار" },
+      { portuguese: "gostar de", arabic: "يحب / يعجبه", pronunciation: "غُوشْتَار دِ" },
+      { portuguese: "precisar de", arabic: "يحتاج إلى", pronunciation: "بْغِيسَار دِ" },
+      { portuguese: "chamar-se", arabic: "اسمه / يسمى", pronunciation: "شَمَارْسِه" }
+    ];
+
+    function renderVerbs(verbs) {
+      const grid = document.getElementById('verbsGrid');
+      grid.innerHTML = '';
+      
+      verbs.forEach((verb, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="portuguese-verb">${verb.portuguese}</span>
+            <span class="number">#${index + 1}</span>
+          </div>
+          <div class="card-body">
+            <div class="arabic-meaning">${verb.arabic}</div>
+            ${verb.pronunciation ? `<div class="pronunciation">النطق: ${verb.pronunciation}</div>` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterVerbs() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = verbsData.filter(item => 
+        item.portuguese.toLowerCase().includes(query) ||
+        item.arabic.includes(query) ||
+        (item.pronunciation && item.pronunciation.includes(query))
+      );
+      renderVerbs(filtered);
+    }
+
+    // Initial render
+    renderVerbs(verbsData);
+  </script>
+</body>
+</html>
