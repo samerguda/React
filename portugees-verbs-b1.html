@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Português de Portugal — B1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-dark: #1e293b;
+      --accent: #dc2626;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 28px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .search-box {
+      margin-bottom: 24px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: #fff;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .portuguese-verb {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--primary);
+      direction: ltr;
+    }
+
+    .number {
+      font-size: 0.8rem;
+      background: var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .arabic-meaning {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pronunciation {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+      
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🇵🇹 Português de Portugal — B1</h1>
+      <p>قائمة أفعال اللغة البرتغالية الأوروبية للمستوى B1 مع المعنى والنطق بالعربي</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="بحث عن فعل باللغة البرتغالية أو العربية..." onkeyup="filterVerbs()">
+    </div>
+
+    <div class="grid" id="verbsGrid"></div>
+  </div>
+
+  <script>
+    const verbsData = [
+      { portuguese: "alcançar", arabic: "يحقق / يصل إلى", pronunciation: "أَلْكَانْسَار" },
+      { portuguese: "evitar", arabic: "يتجنب", pronunciation: "إِفِيتَار" },
+      { portuguese: "resolver", arabic: "يحل", pronunciation: "غِيزُولْفِير" },
+      { portuguese: "decidir", arabic: "يقرر", pronunciation: "دِسِيدِير" },
+      { portuguese: "melhorar", arabic: "يحسّن / يتحسن", pronunciation: "مِلْيُورَار" },
+      { portuguese: "desenvolver", arabic: "يطوّر", pronunciation: "دِزِنْفُولْفِير" },
+      { portuguese: "aumentar", arabic: "يزيد", pronunciation: "أَوْمِنْتَار" },
+      { portuguese: "diminuir", arabic: "يقلل", pronunciation: "دِمِينُوِير" },
+      { portuguese: "mudar", arabic: "يغيّر", pronunciation: "مُودَار" },
+      { portuguese: "manter", arabic: "يحافظ على", pronunciation: "مَنْتِير" },
+      { portuguese: "conseguir", arabic: "يتمكن من / يحصل على", pronunciation: "كُونْسِغِير" },
+      { portuguese: "tentar", arabic: "يحاول", pronunciation: "تِنْتَار" },
+      { portuguese: "continuar", arabic: "يستمر", pronunciation: "كُونْتِينُوَار" },
+      { portuguese: "parar", arabic: "يتوقف", pronunciation: "بَارَار" },
+      { portuguese: "começar", arabic: "يبدأ", pronunciation: "كُومِيسَار" },
+      { portuguese: "terminar", arabic: "ينهي", pronunciation: "تِيرْمِينَار" },
+      { portuguese: "preparar", arabic: "يحضّر", pronunciation: "بْغِبَغَار" },
+      { portuguese: "organizar", arabic: "ينظم", pronunciation: "أُورْغَنِيزَار" },
+      { portuguese: "planejar", arabic: "يخطط", pronunciation: "بْلَانِجَار" },
+      { portuguese: "proteger", arabic: "يحمي", pronunciation: "بْغُوتِيجِير" },
+      { portuguese: "permitir", arabic: "يسمح", pronunciation: "بِيِرْمِتِير" },
+      { portuguese: "proibir", arabic: "يمنع", pronunciation: "بْغُوِبِير" },
+      { portuguese: "obrigar", arabic: "يجبر", pronunciation: "أُبْغِغَار" },
+      { portuguese: "aceitar", arabic: "يقبل", pronunciation: "أَسِيتَار" },
+      { portuguese: "recusar", arabic: "يرفض", pronunciation: "غِيكُوزَار" },
+      { portuguese: "concordar", arabic: "يوافق", pronunciation: "كُونْكُورْدَار" },
+      { portuguese: "discordar", arabic: "يختلف", pronunciation: "دِشْكُورْدَار" },
+      { portuguese: "preferir", arabic: "يفضل", pronunciation: "بْغِيفِير" },
+      { portuguese: "escolher", arabic: "يختار", pronunciation: "إِشْكُولْيِير" },
+      { portuguese: "comparar", arabic: "يقارن", pronunciation: "كُومْبَارَار" },
+      { portuguese: "explicar", arabic: "يشرح", pronunciation: "إِشْبْلِيكَار" },
+      { portuguese: "descrever", arabic: "يصف", pronunciation: "دِشْكْغِيفِير" },
+      { portuguese: "contar", arabic: "يحكي / يخبر", pronunciation: "كُونْتَار" },
+      { portuguese: "discutir", arabic: "يناقش", pronunciation: "دِشْكُتِير" },
+      { portuguese: "conversar", arabic: "يتحدث", pronunciation: "كُونْفِيرْسَار" },
+      { portuguese: "responder", arabic: "يجيب", pronunciation: "غِيشْبُونْدِير" },
+      { portuguese: "perguntar", arabic: "يسأل", pronunciation: "بِغْغُونْتَار" },
+      { portuguese: "sugerir", arabic: "يقترح", pronunciation: "سُوجِيرِير" },
+      { portuguese: "aconselhar", arabic: "ينصح", pronunciation: "أَكُونْسِلْيَار" },
+      { portuguese: "avisar", arabic: "يحذر / يخبر", pronunciation: "أَفِيزَار" },
+      { portuguese: "informar", arabic: "يُبلغ", pronunciation: "أَنْفُورْمَار" },
+      { portuguese: "avisar", arabic: "يخبر", pronunciation: "أَفِيزَار" },
+      { portuguese: "convidar", arabic: "يدعو", pronunciation: "كُونْفِيدَار" },
+      { portuguese: "apresentar", arabic: "يقدم / يعرض", pronunciation: "أَبْغِيزِنْتَار" },
+      { portuguese: "participar", arabic: "يشارك", pronunciation: "بَارْتِيسِيبَار" },
+      { portuguese: "contribuir", arabic: "يساهم", pronunciation: "كُونْتْغِبُوِير" },
+      { portuguese: "colaborar", arabic: "يتعاون", pronunciation: "كُولَابُورَار" },
+      { portuguese: "ajudar", arabic: "يساعد", pronunciation: "أَجُودَار" },
+      { portuguese: "apoiar", arabic: "يدعم", pronunciation: "أَبُوِيَار" },
+      { portuguese: "acompanhar", arabic: "يرافق / يتابع", pronunciation: "أَكُومْبَنْيَار" },
+      { portuguese: "conhecer", arabic: "يتعرف / يعرف", pronunciation: "كُونْيِسِير" },
+      { portuguese: "descobrir", arabic: "يكتشف", pronunciation: "دِشْكُوبْغِير" },
+      { portuguese: "aprender", arabic: "يتعلم", pronunciation: "أَبْغَنْدِير" },
+      { portuguese: "ensinar", arabic: "يعلّم", pronunciation: "إِنْسِينَار" },
+      { portuguese: "praticar", arabic: "يمارس / يتدرب", pronunciation: "بْغَاتِيكَار" },
+      { portuguese: "estudar", arabic: "يدرس", pronunciation: "إِشْتُودَار" },
+      { portuguese: "pesquisar", arabic: "يبحث", pronunciation: "بِشْكِيزَار" },
+      { portuguese: "investigar", arabic: "يحقق / يبحث", pronunciation: "أَنْفِشْتِغَار" },
+      { portuguese: "analisar", arabic: "يحلل", pronunciation: "أَنَالِيزَار" },
+      { portuguese: "avaliar", arabic: "يقيّم", pronunciation: "أَفَالِيَار" },
+      { portuguese: "perceber", arabic: "يفهم / يدرك", pronunciation: "بِرْسِيبِير" },
+      { portuguese: "compreender", arabic: "يفهم", pronunciation: "كُومْبْغِإِنْدِير" },
+      { portuguese: "imaginar", arabic: "يتخيل", pronunciation: "إِمَاجِينَار" },
+      { portuguese: "acreditar", arabic: "يعتقد", pronunciation: "أَكْغِدِيتَار" },
+      { portuguese: "duvidar", arabic: "يشك", pronunciation: "دُوفِيدَار" },
+      { portuguese: "lembrar-se", arabic: "يتذكر", pronunciation: "لِيمْبْغَارْسِه" },
+      { portuguese: "esquecer-se", arabic: "ينسى", pronunciation: "إِشْكِيسِيرْسِه" },
+      { portuguese: "reconhecer", arabic: "يتعرف على", pronunciation: "غِيكُونْيِسِير" },
+      { portuguese: "notar", arabic: "يلاحظ", pronunciation: "نُوتَار" },
+      { portuguese: "reparar", arabic: "يلاحظ / يصلح", pronunciation: "غِيبَارَار" },
+      { portuguese: "sentir", arabic: "يشعر", pronunciation: "سِنْتِير" },
+      { portuguese: "preocupar-se", arabic: "يقلق", pronunciation: "بْغِوكُوبَارْسِه" },
+      { portuguese: "interessar-se", arabic: "يهتم", pronunciation: "أَنْتِغِيسَارْسِه" },
+      { portuguese: "admirar", arabic: "يعجب بـ", pronunciation: "أَدْمِغَار" },
+      { portuguese: "odiar", arabic: "يكره", pronunciation: "أُودِيَار" },
+      { portuguese: "adorar", arabic: "يعشق", pronunciation: "أَدُورَار" },
+      { portuguese: "esperar", arabic: "يأمل / ينتظر", pronunciation: "إِشْبِيرَار" },
+      { portuguese: "desejar", arabic: "يتمنى", pronunciation: "دِزِيجَار" },
+      { portuguese: "sonhar", arabic: "يحلم", pronunciation: "سُونْيَار" },
+      { portuguese: "preferir", arabic: "يفضل", pronunciation: "بْغِيفِير" },
+      { portuguese: "viajar", arabic: "يسافر", pronunciation: "فِيَاجَار" },
+      { portuguese: "reservar", arabic: "يحجز", pronunciation: "غِيزِيرْفَار" },
+      { portuguese: "alugar", arabic: "يستأجر", pronunciation: "أَلُوغَار" },
+      { portuguese: "visitar", arabic: "يزور", pronunciation: "فِيزِيتَار" },
+      { portuguese: "explorar", arabic: "يستكشف", pronunciation: "إِشْبْلُورَار" },
+      { portuguese: "partir", arabic: "يغادر", pronunciation: "بَارْتِير" },
+      { portuguese: "chegar", arabic: "يصل", pronunciation: "شِغَار" },
+      { portuguese: "regressar", arabic: "يعود", pronunciation: "غِغْغِيسَار" },
+      { portuguese: "atravessar", arabic: "يعبر", pronunciation: "أَتْغَافِسَار" },
+      { portuguese: "seguir", arabic: "يتبع", pronunciation: "سِغِير" },
+      { portuguese: "perder-se", arabic: "يضل الطريق", pronunciation: "بِيرْدِيرْسِه" },
+      { portuguese: "orientar-se", arabic: "يجد طريقه / يتوجه", pronunciation: "أُورْيِنْتَارْسِه" },
+      { portuguese: "conduzir", arabic: "يقود", pronunciation: "كُونْدُزِير" },
+      { portuguese: "estacionar", arabic: "يركن", pronunciation: "إِشْتَاسِيُونَار" },
+      { portuguese: "apanhar", arabic: "يلحق / يمسك", pronunciation: "أَبَنْيَار" },
+      { portuguese: "passar", arabic: "يمر / يقضي", pronunciation: "بَاسَار" },
+      { portuguese: "ficar", arabic: "يبقى", pronunciation: "فِيكَار" },
+      { portuguese: "voltar", arabic: "يعود", pronunciation: "فُولْتَار" },
+      { portuguese: "mudar-se", arabic: "ينتق للكسن", pronunciation: "مُودَارْسِه" },
+      { portuguese: "viver", arabic: "يعيش", pronunciation: "فِيفِير" },
+      { portuguese: "trabalhar", arabic: "يعمل", pronunciation: "تْغَبَالْيَار" },
+      { portuguese: "empregar", arabic: "يوظف / يستخدم", pronunciation: "إِمْبْغِغَار" },
+      { portuguese: "contratar", arabic: "يوظف", pronunciation: "كُونْتْغَاتَار" },
+      { portuguese: "despedir", arabic: "يفصل من العمل", pronunciation: "دِشْبِدِير" },
+      { portuguese: "candidatar-se", arabic: "يتقدم لوظيفة", pronunciation: "كَنْدِيدَاتَارْسِه" },
+      { portuguese: "concorrer", arabic: "ينافس / يتقدم", pronunciation: "كُونْكُورِير" },
+      { portuguese: "ganhar", arabic: "يكسب", pronunciation: "غَانْيَار" },
+      { portuguese: "receber", arabic: "يستلم", pronunciation: "غِيسِيبِير" },
+      { portuguese: "gastar", arabic: "ينفق", pronunciation: "غَشْتَار" },
+      { portuguese: "poupar", arabic: "يدخر", pronunciation: "بُوبَار" },
+      { portuguese: "investir", arabic: "يستثمر", pronunciation: "أَنْفِشْتِير" },
+      { portuguese: "economizar", arabic: "يوفر المال", pronunciation: "إِكُونُومِيزَار" },
+      { portuguese: "custar", arabic: "يكلف", pronunciation: "كُوشْتَار" },
+      { portuguese: "valer", arabic: "يساوي / يستحق", pronunciation: "فَلِير" },
+      { portuguese: "comprar", arabic: "يشتري", pronunciation: "كُومْبْغَار" },
+      { portuguese: "vender", arabic: "يبيع", pronunciation: "فِينْدِير" },
+      { portuguese: "trocar", arabic: "يبدل", pronunciation: "تْغُوكَار" },
+      { portuguese: "devolver", arabic: "يعيد", pronunciation: "دِفُولْفِير" },
+      { portuguese: "encomendar", arabic: "يطلب / يوصي", pronunciation: "إِنْكُومِنْدَار" },
+      { portuguese: "entregar", arabic: "يسلّم", pronunciation: "إِنْتْغِغَار" },
+      { portuguese: "receber", arabic: "يستلم", pronunciation: "غِيسِيبِير" },
+      { portuguese: "produzir", arabic: "ينتج", pronunciation: "بْغُودُزِير" },
+      { portuguese: "fabricar", arabic: "يصنع", pronunciation: "فَابْغِيكَار" },
+      { portuguese: "construir", arabic: "يبني", pronunciation: "كُونْشْتْغُوِير" },
+      { portuguese: "reparar", arabic: "يصلح", pronunciation: "غِيبَارَار" },
+      { portuguese: "instalar", arabic: "يركب / يثبت", pronunciation: "أَنْشْتَلَار" },
+      { portuguese: "funcionar", arabic: "يعمل", pronunciation: "فُونْسِيُونَار" },
+      { portuguese: "ligar", arabic: "يشغّل", pronunciation: "لِغَار" },
+      { portuguese: "desligar", arabic: "يطفئ", pronunciation: "دِشْلِغَار" },
+      { portuguese: "carregar", arabic: "يشحن / يحمل", pronunciation: "كَاغِغَار" },
+      { portuguese: "descarregar", arabic: "ينزّل / يفرغ", pronunciation: "دِشْكَاغِغَار" },
+      { portuguese: "guardar", arabic: "يحفظ", pronunciation: "غُوَارْدَار" },
+      { portuguese: "armazenar", arabic: "يخزن", pronunciation: "أَرْمَازِينَر" },
+      { portuguese: "enviar", arabic: "يرسل", pronunciation: "إِنْفِيَار" },
+      { portuguese: "receber", arabic: "يتلقى", pronunciation: "غِيسِيبِير" },
+      { portuguese: "partilhar", arabic: "يشارك", pronunciation: "بَارْتِلْيَار" },
+      { portuguese: "publicar", arabic: "ينشر", pronunciation: "بُوبْلِيكَار" },
+      { portuguese: "apagar", arabic: "يمسح / يطفئ", pronunciation: "أَبَاغَار" },
+      { portuguese: "imprimir", arabic: "يطبع", pronunciation: "أَنْبْغِيمِير" },
+      { portuguese: "digitalizar", arabic: "يرقمن / يمسح ضوئيًا", pronunciation: "دِيجِيتَلِيزَار" },
+      { portuguese: "fotografar", arabic: "يصور", pronunciation: "فُوتُوغْغَفَار" },
+      { portuguese: "filmar", arabic: "يصور فيديو", pronunciation: "فِلْمَار" },
+      { portuguese: "gravar", arabic: "يسجل", pronunciation: "غْغَافَار" },
+      { portuguese: "pesquisar", arabic: "يبحث", pronunciation: "بِشْكِيزَار" },
+      { portuguese: "consultar", arabic: "يستشير / يراجع", pronunciation: "كُونْسُولْتَار" },
+      { portuguese: "aceder", arabic: "يدخل / يصل إلى", pronunciation: "أَسِيدِير" },
+      { portuguese: "clicar", arabic: "ينقر", pronunciation: "كْلِيكَار" },
+      { portuguese: "descarregar", arabic: "ينزّل", pronunciation: "دِشْكَاغِغَار" },
+      { portuguese: "atualizar", arabic: "يحدّث", pronunciation: "أَتْوَالِيزَار" },
+      { portuguese: "instalar", arabic: "يثبت", pronunciation: "أَنْشْتَلَار" },
+      { portuguese: "partilhar", arabic: "يشارك", pronunciation: "بَارْتِلْيَار" },
+      { portuguese: "comentar", arabic: "يعلّق", pronunciation: "كُومِنْتَار" },
+      { portuguese: "responder", arabic: "يرد", pronunciation: "غِيشْبُونْدِير" },
+      { portuguese: "bloquear", arabic: "يحظر", pronunciation: "بْلُوكِيَار" },
+      { portuguese: "desbloquear", arabic: "يفك الحظر", pronunciation: "دِشْبْلُوكِيَار" },
+      { portuguese: "seguir", arabic: "يتابع", pronunciation: "سِغِير" },
+      { portuguese: "contactar", arabic: "يتواصل مع", pronunciation: "كُونْتَاكْتَار" },
+      { portuguese: "comunicar", arabic: "يتواصل", pronunciation: "كُومُونِيكَار" },
+      { portuguese: "informar", arabic: "يبلغ", pronunciation: "أَنْفُورْمَار" },
+      { portuguese: "anunciar", arabic: "يعلن", pronunciation: "أَنُونْسِيَار" },
+      { portuguese: "explicar", arabic: "يشرح", pronunciation: "إِشْبْلِيكَار" },
+      { portuguese: "argumentar", arabic: "يجادل / يقدم حجة", pronunciation: "أَرْغُومِنْتَار" },
+      { portuguese: "justificar", arabic: "يبرر", pronunciation: "جُوشْتِيفِيكَار" },
+      { portuguese: "demonstrar", arabic: "يبرهن", pronunciation: "دِمُونْشْتْغَار" },
+      { portuguese: "mostrar", arabic: "يعرض", pronunciation: "مُوشْتْغَار" },
+      { portuguese: "apresentar", arabic: "يقدم", pronunciation: "أَبْغِيزِنْتَار" },
+      { portuguese: "descrever", arabic: "يصف", pronunciation: "دِشْكْغِيفِير" },
+      { portuguese: "comparar", arabic: "يقارن", pronunciation: "كُومْبَارَار" },
+      { portuguese: "distinguir", arabic: "يميز", pronunciation: "دِشْتَنْغِوِير" },
+      { portuguese: "considerar", arabic: "يعتبر", pronunciation: "كُونْسِيدِيرَار" },
+      { portuguese: "avaliar", arabic: "يقيّم", pronunciation: "أَفَالِيَار" },
+      { portuguese: "analisar", arabic: "يحلل", pronunciation: "أَنَالِيزَار" },
+      { portuguese: "verificar", arabic: "يتحقق", pronunciation: "فِيرِفِيكَار" },
+      { portuguese: "confirmar", arabic: "تؤكد", pronunciation: "كُونْفِيرْمَار" },
+      { portuguese: "negar", arabic: "ينكر", pronunciation: "نِغَار" },
+      { portuguese: "admitir", arabic: "يعترف / يقبل", pronunciation: "أَدْمِتِير" },
+      { portuguese: "aceitar", arabic: "يقبل", pronunciation: "أَسِيتَار" },
+      { portuguese: "recusar", arabic: "يرفض", pronunciation: "غِيكُوزَار" },
+      { portuguese: "concordar", arabic: "يوافق", pronunciation: "كُونْكُورْدَار" },
+      { portuguese: "discordar", arabic: "يختلف", pronunciation: "دِشْكُورْدَار" },
+      { portuguese: "sugerir", arabic: "يقترح", pronunciation: "سُوجِيرِير" },
+      { portuguese: "recomendar", arabic: "يوصي", pronunciation: "غِيكُومِنْدَار" },
+      { portuguese: "aconselhar", arabic: "ينصح", pronunciation: "أَكُونْسِلْيَار" },
+      { portuguese: "convencer", arabic: "يقنع", pronunciation: "كُونْفِنْسِير" },
+      { portuguese: "influenciar", arabic: "يؤثر", pronunciation: "أَنْفْلُوِنْسِيَار" },
+      { portuguese: "incentivar", arabic: "يشجع / يحفز", pronunciation: "أَنْسِنْتِيفَار" },
+      { portuguese: "motivar", arabic: "يحفز", pronunciation: "مُوتِيفَار" },
+      { portuguese: "encorajar", arabic: "يشجع", pronunciation: "إِنْكُورَاجَار" },
+      { portuguese: "impedir", arabic: "يمنع", pronunciation: "أَنْبِيدِير" },
+      { portuguese: "permitir", arabic: "يسمح", pronunciation: "بِيِرْمِتِير" },
+      { portuguese: "obrigar", arabic: "يجبر", pronunciation: "أُبْغِغَار" },
+      { portuguese: "evitar", arabic: "يتجنب", pronunciation: "إِفِيتَار" },
+      { portuguese: "impedir", arabic: "يمنع", pronunciation: "أَنْبِيدِير" },
+      { portuguese: "proteger", arabic: "يحمي", pronunciation: "بْغُوتِيجِير" },
+      { portuguese: "ameaçar", arabic: "يهدد", pronunciation: "أَمِيَاسَار" },
+      { portuguese: "defender", arabic: "يدافع", pronunciation: "دِفِنْدِير" },
+      { portuguese: "atacar", arabic: "يهاجم", pronunciation: "أَتَكَار" },
+      { portuguese: "lutar", arabic: "يكافح / يقاتل", pronunciation: "لُوتَار" },
+      { portuguese: "combater", arabic: "يكافح", pronunciation: "كُومْبَاتِير" },
+      { portuguese: "resistir", arabic: "يقاوم", pronunciation: "غِيزِشْتِير" },
+      { portuguese: "aceitar", arabic: "يقبل", pronunciation: "أَسِيتَار" },
+      { portuguese: "recusar", arabic: "يرفض", pronunciation: "غِيكُوزَار" },
+      { portuguese: "resolver", arabic: "يحل", pronunciation: "غِيزُولْفِير" },
+      { portuguese: "solucionar", arabic: "يحل مشكلة", pronunciation: "سُولُوسِيُونَار" },
+      { portuguese: "conseguir", arabic: "يتمكن من", pronunciation: "كُونْسِغِير" },
+      { portuguese: "alcançar", arabic: "يحقق", pronunciation: "أَلْكَانْسَار" },
+      { portuguese: "atingir", arabic: "يبلغ / يحقق", pronunciation: "أَتَنْجِير" },
+      { portuguese: "superar", arabic: "يتغلب على", pronunciation: "سُوبِيرَار" },
+      { portuguese: "enfrentar", arabic: "يواجه", pronunciation: "إِنْفْغِنْتَار" },
+      { portuguese: "ultrapassar", arabic: "يتجاوز", pronunciation: "أُولْتْغَبَاسَار" },
+      { portuguese: "evitar", arabic: "يتجنب", pronunciation: "إِفِيتَار" },
+      { portuguese: "prevenir", arabic: "يمنع / يقي", pronunciation: "بْغِيفِنِير" },
+      { portuguese: "reduzir", arabic: "يقلل", pronunciation: "غِيدُزِير" },
+      { portuguese: "aumentar", arabic: "يزيد", pronunciation: "أَوْمِنْتَار" },
+      { portuguese: "melhorar", arabic: "يحسن", pronunciation: "مِلْيُورَار" },
+      { portuguese: "piorar", arabic: "يسوء / يفاقم", pronunciation: "بِيُورَار" },
+      { portuguese: "manter", arabic: "يحافظ", pronunciation: "مَنْتِير" },
+      { portuguese: "preservar", arabic: "يحافظ على", pronunciation: "بْغِيزِيرْفَار" },
+      { portuguese: "substituir", arabic: "يستبدل", pronunciation: "سُوبْشْتِيتُوِير" },
+      { portuguese: "adaptar", arabic: "يكيّف", pronunciation: "أَدَابْتَار" },
+      { portuguese: "desenvolver", arabic: "يطور", pronunciation: "دِزِنْفُولْفِير" },
+      { portuguese: "criar", arabic: "ينشئ", pronunciation: "كْغِيَار" },
+      { portuguese: "inventar", arabic: "يخترع", pronunciation: "أَنْفِنْتَار" },
+      { portuguese: "produzir", arabic: "ينتج", pronunciation: "بْغُودُزِير" },
+      { portuguese: "criar", arabic: "يخلق", pronunciation: "كْغِيَار" },
+      { portuguese: "transformar", arabic: "يحول", pronunciation: "تْغَانْشْفُورْمَار" },
+      { portuguese: "modificar", arabic: "يعدل", pronunciation: "مُودِيفِيكَار" },
+      { portuguese: "alterar", arabic: "يغير", pronunciation: "أَلْتِيرَار" },
+      { portuguese: "corrigir", arabic: "يصحح", pronunciation: "كُورِيجِير" },
+      { portuguese: "melhorar", arabic: "يحسن", pronunciation: "مِلْيُورَار" },
+      { portuguese: "organizar", arabic: "ينظم", pronunciation: "أُورْغَنِيزَار" },
+      { portuguese: "planejar", arabic: "يخطط", pronunciation: "بْلَانِجَار" },
+      { portuguese: "prever", arabic: "يتوقع", pronunciation: "بْغِيفِير" },
+      { portuguese: "preparar", arabic: "يحضر", pronunciation: "بْغِبَغَار" },
+      { portuguese: "decidir", arabic: "يقرر", pronunciation: "دِسِيدِير" },
+      { portuguese: "escolher", arabic: "يختار", pronunciation: "إِشْكُولْيِير" },
+      { portuguese: "avaliar", arabic: "يقيم", pronunciation: "أَفَالِيَار" },
+      { portuguese: "comparar", arabic: "يقارن", pronunciation: "كُومْبَارَار" },
+      { portuguese: "pesar", arabic: "يزن / يوازن", pronunciation: "بِيزَار" },
+      { portuguese: "calcular", arabic: "يحسب", pronunciation: "كَلْكُولَار" },
+      { portuguese: "medir", arabic: "يقيس", pronunciation: "مِيدِير" },
+      { portuguese: "contar", arabic: "يعد", pronunciation: "كُونْتَار" },
+      { portuguese: "somar", arabic: "يجمع", pronunciation: "سُومَار" },
+      { portuguese: "dividir", arabic: "يقسم", pronunciation: "دِفِيدِير" },
+      { portuguese: "multiplicar", arabic: "يضرب", pronunciation: "مُولْتِيبْلِيكَار" },
+      { portuguese: "calcular", arabic: "يحسب", pronunciation: "كَلْكُولَار" },
+      { portuguese: "estimar", arabic: "يقدّر", pronunciation: "إِشْتِيمَار" },
+      { portuguese: "prever", arabic: "يتنبأ", pronunciation: "بْغِيفِير" },
+      { portuguese: "imaginar", arabic: "يتخيل", pronunciation: "إِمَاجِينَار" },
+      { portuguese: "supor", arabic: "يفترض", pronunciation: "سُوبُور" },
+      { portuguese: "duvidar", arabic: "يشك", pronunciation: "دُوفِيدَار" },
+      { portuguese: "acreditar", arabic: "يعتقد", pronunciation: "أَكْغِدِيتَار" },
+      { portuguese: "admitir", arabic: "يعترف", pronunciation: "أَدْمِتِير" },
+      { portuguese: "negar", arabic: "ينكر", pronunciation: "نِغَار" },
+      { portuguese: "perceber", arabic: "يدرك", pronunciation: "بِرْسِيبِير" },
+      { portuguese: "compreender", arabic: "يفهم", pronunciation: "كُومْبْغِإِنْدِير" },
+      { portuguese: "interpretar", arabic: "يفسر", pronunciation: "أَنْتِيرْبْغِيتَار" },
+      { portuguese: "explicar", arabic: "يشرح", pronunciation: "إِشْبْلِيكَار" },
+      { portuguese: "resumir", arabic: "يلخص", pronunciation: "غِيزُومِير" },
+      { portuguese: "concluir", arabic: "يستنتج", pronunciation: "كُونْكْلُوِير" },
+      { portuguese: "participar", arabic: "يشارك", pronunciation: "بَارْتِيسِيبَار" },
+      { portuguese: "colaborar", arabic: "يتعاون", pronunciation: "كُولَابُورَار" },
+      { portuguese: "cooperar", arabic: "يتعاون", pronunciation: "كُوُبِيرَار" },
+      { portuguese: "contribuir", arabic: "يساهم", pronunciation: "كُونْتْغِبُوِير" },
+      { portuguese: "liderar", arabic: "يقود", pronunciation: "لِيدِيرَار" },
+      { portuguese: "gerir", arabic: "يدير", pronunciation: "جِيرِير" },
+      { portuguese: "administrar", arabic: "يدير", pronunciation: "أَدْمِينِشْتْغَار" },
+      { portuguese: "coordenar", arabic: "ينسق", pronunciation: "كُوُورْدِنَار" },
+      { portuguese: "supervisionar", arabic: "يشرف", pronunciation: "سُوبِيرْفِيزِيُونَار" },
+      { portuguese: "controlar", arabic: "يراقب", pronunciation: "كُونْتْغُولَار" },
+      { portuguese: "cumprir", arabic: "يلتزم / ينفذ", pronunciation: "كُومْبْغِير" },
+      { portuguese: "respeitar", arabic: "يحترم", pronunciation: "غِيشْبِيتَار" },
+      { portuguese: "obedecer", arabic: "يطيع", pronunciation: "أُبِيدِسِير" },
+      { portuguese: "proibir", arabic: "يمنع", pronunciation: "بْغُوِبِير" },
+      { portuguese: "autorizar", arabic: "يسمح / يصرح", pronunciation: "أَوْتُورِيزَار" },
+      { portuguese: "legalizar", arabic: "يضفي الشرعية", pronunciation: "لِخَلِيزَار" },
+      { portuguese: "regular", arabic: "ينظم", pronunciation: "غِخُولَار" },
+      { portuguese: "fiscalizar", arabic: "يراقب رسميًا", pronunciation: "فِشْكَالِيزَار" },
+      { portuguese: "denunciar", arabic: "يبلغ عن / يندد", pronunciation: "دِينُونْسِيَار" },
+      { portuguese: "protestar", arabic: "يحتج", pronunciation: "بْغُوتِشْتَار" },
+      { portuguese: "negociar", arabic: "يتفاوض", pronunciation: "نِخُوسِيَار" },
+      { portuguese: "concordar", arabic: "يتفق", pronunciation: "كُونْكُورْدَار" },
+      { portuguese: "discordar", arabic: "يختلف", pronunciation: "دِشْكُورْدَار" },
+      { portuguese: "comprometer-se", arabic: "يتعهد", pronunciation: "كُومْبْغُومِيتِيرْسِه" },
+      { portuguese: "prometer", arabic: "يعد", pronunciation: "بْغُومِيتِير" },
+      { portuguese: "cumprir", arabic: "يفي بـ", pronunciation: "كُومْبْغِير" },
+      { portuguese: "reclamar", arabic: "يشتكي", pronunciation: "غِيكْلَمَار" },
+      { portuguese: "queixar-se", arabic: "يشتكي", pronunciation: "كِيْشَارْسِه" },
+      { portuguese: "agradecer", arabic: "يشكر", pronunciation: "أَغْغِدِسِير" },
+      { portuguese: "desculpar-se", arabic: "يعتذر", pronunciation: "دِشْكُولْبَارْسِه" },
+      { portuguese: "perdoar", arabic: "يسامح", pronunciation: "بِيرْدُوَار" },
+      { portuguese: "confiar", arabic: "يثق", pronunciation: "كُونْفِيَار" },
+      { portuguese: "desconfiar", arabic: "لا يثق / يشك", pronunciation: "دِشْكُونْفِيَار" },
+      { portuguese: "respeitar", arabic: "يحترم", pronunciation: "غِيشْبِيتَار" },
+      { portuguese: "apoiar", arabic: "يدعم", pronunciation: "أَبُوِيَار" },
+      { portuguese: "defender", arabic: "يدافع", pronunciation: "دِفِنْدِير" },
+      { portuguese: "criticar", arabic: "ينتقد", pronunciation: "كْغِيتِيكَار" },
+      { portuguese: "elogiar", arabic: "يمدح", pronunciation: "إِلُوجِيَار" },
+      { portuguese: "culpar", arabic: "يلوم", pronunciation: "كُولْبَار" },
+      { portuguese: "perceber", arabic: "يفهم / يدرك", pronunciation: "بِرْسِيبِير" }
+    ];
+
+    function renderVerbs(verbs) {
+      const grid = document.getElementById('verbsGrid');
+      grid.innerHTML = '';
+      
+      verbs.forEach((verb, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="portuguese-verb">${verb.portuguese}</span>
+            <span class="number">#${index + 1}</span>
+          </div>
+          <div class="card-body">
+            <div class="arabic-meaning">${verb.arabic}</div>
+            ${verb.pronunciation ? `<div class="pronunciation">النطق: ${verb.pronunciation}</div>` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterVerbs() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = verbsData.filter(item => 
+        item.portuguese.toLowerCase().includes(query) ||
+        item.arabic.includes(query) ||
+        (item.pronunciation && item.pronunciation.includes(query))
+      );
+      renderVerbs(filtered);
+    }
+
+    // Initial render
+    renderVerbs(verbsData);
+  </script>
+</body>
+</html>
